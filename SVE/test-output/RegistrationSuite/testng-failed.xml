@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="3" parallel="tests" name="Failed suite [RegistrationSuite]">
+  <test thread-count="3" parallel="tests" name="RegistrationTest-3(failed)">
+    <classes>
+      <class name="smoke.test.Reg">
+        <methods>
+          <include name="beforeClass"/>
+          <include name="auth"/>
+          <include name="TearDown"/>
+        </methods>
+      </class> <!-- smoke.test.Reg -->
+    </classes>
+  </test> <!-- RegistrationTest-3(failed) -->
+</suite> <!-- Failed suite [RegistrationSuite] -->

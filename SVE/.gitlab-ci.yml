@@ -1,0 +1,21 @@
+stages:
+  - test
+
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
+
+cache:
+  key: maven
+  paths:
+    - .m2/repository
+
+run_tests:
+  stage: test
+  script:
+    - Write-Host "PATH: $env:PATH"
+    - Write-Host "Запуск Maven тестов"
+    - "D:\\Applications\\Scoop\\apps\\maven\\current\\bin\\mvn.cmd clean test"
+  artifacts:
+    when: always
+    paths:
+      - target/allure-results

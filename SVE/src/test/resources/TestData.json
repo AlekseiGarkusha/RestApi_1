@@ -1,0 +1,142 @@
+{
+  "step_1": {
+    "lastName": "Test Фамилия",
+    "name": "Test Имя",
+    "patronymic": "Test Отчество",
+    "birthDate": "21.05.2020",
+    "gender": "мужской",
+    "email": "expected.email@ya.ru",
+    "birthPlace": "Место-рождения",
+    "address": "Адрес регистрации",
+    "index": "111111",
+    "phone": "(888)-888-88-88"
+  },
+  "step_2": {
+    "documentType": "Паспорт гражданина Российской Федерации",
+    "documentIssued": "Кем выдан",
+    "documentIssueDate": "23.05.2020",
+    "documentDepartmentCode": "000001"
+  },
+  "step_3": {
+    "educationDocumentIssued": "Документ выдан тестовой организацией",
+    "educationDocumentSeries": "1234",
+    "educationDocumentNumber": "123456",
+    "educationDocumentIssueDate": "01.01.2025",
+    "gradesFives": "5",
+    "gradesFours": "4",
+    "gradesThrees": "3"
+  },
+  "step_4": {
+    "spoOrganisation": "Государственное бюджетное профессиональное образовательное учреждение Республики Крым «Симферопольский автотранспортный техникум»",
+    "educationLevel": "Основное общее (9 классов)"
+  },
+  "step_5": {
+    "speciality": "08.02.12 Строительство и эксплуатация автомобильных дорог, аэродромов и городских путей сообщения"
+  },
+  "step_6": {
+    "mathematics": "1",
+    "computerScience": "2",
+    "physics": "3",
+    "geography": "4",
+    "chinese": "5",
+    "literature": "6",
+    "spanish": "7",
+    "german": "8"
+  },
+  "step_7": {
+    "disabilityCertificate": {
+      "series": "Серия-справки",
+      "number": "Номер-справки",
+      "group": "Группа-справки",
+      "reason": "Причина-справки",
+      "issued": "Наименование организации, выдавшей справку",
+      "issueDate": "01.01.2025",
+      "expirationDate": "01.01.2050"
+    },
+    "benefits": {
+      "benefit_1": "Герои России и обладатели трёх орденов Мужества",
+      "benefit_2": "Участники боевых действий и служащие на территориях проведения специальной военной операции (СВО) и граничащих с ними, а также их дети",
+      "benefit_3": "Ветераны и участники боевых действий — кроме участников СВО",
+      "benefit_4": "Военнослужащие и сотрудники силовых ведомств — кроме участников СВО",
+      "benefit_5": "Дети военнослужащих и сотрудников силовых ведомств — кроме детей участников СВО",
+      "benefit_6": "Дети участников боевых действий за границей",
+      "benefit_7": "Дети умерших от COVID-19 медработников",
+      "benefit_8": "Дети-сироты и дети, оставшиеся без попечения родителей",
+      "benefit_9": "Дети-инвалиды",
+      "benefit_10": "Люди с инвалидностью I или II группы"
+    },
+    "reference086u": {
+      "o86uSeries": "Серия-справки 086у",
+      "o86uNumber": "Номер-справки 086у",
+      "o86uDate": "01.01.2025"
+    },
+    "specialConditions": {
+      "condition_1": "Для слепых",
+      "condition_2": "Для слабовидящих",
+      "condition_3": "Для глухих и слабослышащих",
+      "condition_4": "Для слепоглухих",
+      "condition_5": "Для лиц с тяжелыми нарушениями речи",
+      "condition_6": "Для лиц с нарушениями опорно-двигательного аппарата"
+    },
+    "individualAchievements": {
+      "iAch_1": "Победа в олимпиадах или иных конкурсах",
+      "score_1": "111"
+    }
+  },
+  "step_8": {
+    "legalRepresentative": {
+      "fio": "Фамилия Имя Отчество",
+      "phone": "(978)-555-88-77",
+      "email": "Example@ya.ru"
+    }
+  },
+
+
+  "specialityPage": {
+    "SPOOrganisationName": "Симферопольский колледж радиоэлектроники",
+    "numberOfReceptionPlaces": "10",
+    "termOfStudy": "10"
+  },
+
+  "addRoleCOO": {
+    "fullName": "ФИО - Роль СОО",
+    "userPosition": "Должность - Роль СОО",
+    "phone": "9999999999"
+  },
+
+  "addEntranceExams": {
+    "name": "Тест ВИ для 'Строительство и эксплуатация автомобильных дорог...'",
+    "score": "50"
+  },
+
+  "addGroupEntranceExams": {
+    "groupName": "Тест группа ВИ для 'Строительство и эксплуатация автомобильных дорог...'",
+    "location": "Тестовое место проведения ВИ",
+    "numberSeats": "70",
+    "dateTime": "10.10.3000 13:13"
+  },
+
+  "addScoreEntranceExams": {
+    "score_1": "70"
+  },
+
+  "editingUser": {
+    "login": "TestUser777",
+    "email": "test-user-email@gmail.com",
+    "fullName": "Фамилия Имя Отчество",
+    "position": "тестовая должность",
+    "phone": "5555555555"
+  },
+
+  "expectedData":{
+    "expectedNewApplicantSurname": "Обновлённая фамилия",
+    "expectedNewApplicantName": "Обновлённое имя",
+    "expectedNewApplicantPatronymic": "Обновлённое отчество",
+    "expectedNewApplicantBirthDate": "05.05.2005",
+    "expectedNewApplicantBirthPlace": "Обновлённое Место-рождения",
+    "expectedNewApplicantIndex": "221122",
+    "expectedNewApplicantEmail": "refactoring@gmail.com",
+    "expectedNewApplicantPhone": "3333333333",
+    "expectedNewApplicantAddress": "Обновлённое место регистрации"
+  }
+}
