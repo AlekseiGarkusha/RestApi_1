@@ -13,7 +13,6 @@ import utils.random.GenerateDate;
 
 import static tests.adminOO.WIP_workingWithStatuses.Locators.*;
 import static tests.adminOO.changeApplicantData.Locators.*;
-
 import static tests.registration.registrationClassic.steps.step_1.Locators.*;
 
 public class Methods extends BaseSteps {

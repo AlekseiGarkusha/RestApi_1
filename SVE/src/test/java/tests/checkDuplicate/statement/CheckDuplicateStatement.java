@@ -24,8 +24,9 @@ import utils.random.GenerateRandomNumber;
 import utils.random.GenerateRandomSeries;
 import utils.random.GenerateRandomSnils;
 
-import static tests.registration.registrationClassic.steps.step_1.Locators.*;
-import static tests.registration.registrationClassic.steps.step_2.Locators.*;
+import static tests.registration.registrationClassic.steps.step_1.Locators.APPLICANT_SNILS;
+import static tests.registration.registrationClassic.steps.step_2.Locators.DOCUMENT_NUMBER;
+import static tests.registration.registrationClassic.steps.step_2.Locators.DOCUMENT_SERIES;
 
 public class CheckDuplicateStatement extends BaseRegistration {
 

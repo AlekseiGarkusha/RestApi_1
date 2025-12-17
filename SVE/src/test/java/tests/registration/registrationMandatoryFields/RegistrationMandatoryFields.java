@@ -32,14 +32,14 @@ import tests.registration.registrationMandatoryFields.hints.Hints;
 import utils.AssertHintsPresent;
 import utils.PopUpUtils;
 
-import static tests.registration.registrationClassic.steps.step_1.Locators.*;
-import static tests.registration.registrationClassic.steps.step_2.Locators.*;
-import static tests.registration.registrationClassic.steps.step_3.Locators.*;
-import static tests.registration.registrationClassic.steps.step_4.Locators.*;
-import static tests.registration.registrationClassic.steps.step_5.Locators.*;
-import static tests.registration.registrationClassic.steps.step_6.Locators.*;
+import static tests.registration.registrationClassic.steps.step_1.Locators.NEXT_BUTTON_STEP_1;
+import static tests.registration.registrationClassic.steps.step_2.Locators.NEXT_BUTTON_STEP_2;
+import static tests.registration.registrationClassic.steps.step_3.Locators.NEXT_BUTTON_STEP_3;
+import static tests.registration.registrationClassic.steps.step_4.Locators.NEXT_BUTTON_STEP_4;
+import static tests.registration.registrationClassic.steps.step_5.Locators.NEXT_BUTTON_STEP_5;
+import static tests.registration.registrationClassic.steps.step_6.Locators.NEXT_BUTTON_STEP_6;
 import static tests.registration.registrationClassic.steps.step_7.Locators.*;
-import static tests.registration.registrationClassic.steps.step_8.Locators.*;
+import static tests.registration.registrationClassic.steps.step_8.Locators.NEXT_BUTTON_STEP_FINISH;
 
 public class RegistrationMandatoryFields extends BaseRegistration {
 
