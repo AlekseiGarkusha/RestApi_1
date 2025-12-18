@@ -27,7 +27,7 @@ public class Setup {
     if (driver == null) {
       ChromeOptions options = new ChromeOptions();
       options.setCapability("browserName", "chrome");
-//      options.addArguments("--headless=new");
+      options.addArguments("--headless=new");                            /// отображение браузера или скрытие
       options.addArguments("--no-sandbox");
       options.addArguments("--disable-dev-shm-usage");
       options.addArguments("--disable-gpu");
@@ -57,10 +57,6 @@ public class Setup {
 
   public WebDriver getDriver() {
     return driver;
-  }
-
-  public void maximizeWindow() {
-    driver.manage().window().maximize();
   }
 
   public WebDriverWait getWait() {
