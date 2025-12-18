@@ -1,0 +1,11 @@
+{
+  "expectedNewApplicantSurname": "Обновлённая фамилия",
+  "expectedNewApplicantName": "Обновлённое имя",
+  "expectedNewApplicantPatronymic":"Обновлённое отчество",
+  "expectedNewApplicantBirthDate": "05.05.2005",
+  "expectedNewApplicantBirthPlace": "Обновлённое Место-рождения",
+  "expectedNewApplicantIndex": "221122",
+  "expectedNewApplicantEmail": "refactoring@gmail.com",
+  "expectedNewApplicantPhone": "3333333333",
+  "expectedNewApplicantAddress": "Обновлённое место регистрации"
+}

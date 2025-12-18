@@ -1,0 +1,463 @@
+<html>
+<head>
+<title>TestNG:  AdminOO</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>AdminOO</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>32/2/0</td>
+</tr><tr>
+<td>Started on:</td><td>Thu Dec 18 12:41:08 MSK 2025</td>
+</tr>
+<tr><td>Total time:</td><td>75 seconds (75220 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='tests.adminOO.addEntranceExams.AddEntranceExams.addEntranceExams()'><b>addEntranceExams</b><br>Test class: tests.adminOO.addEntranceExams.AddEntranceExams</td>
+<td><div><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.id: entranceexaminationform-name_subject (tried for 10 second(s) with 500 milliseconds interval)
+Build info: version: &apos;4.33.0&apos;, revision: &apos;2c6aaad03a&apos;
+System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.7&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 143.0.7499.41, chrome: {chromedriverVersion: 143.0.7499.146 (c1224fc40c9..., userDataDir: C:\Users\AE8A3~1.GAR\AppDat...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:65134}, goog:processID: 14540, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:65134/devtoo..., se:cdpVersion: 143.0.7499.41, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: ed0b2a2cfa6c0dd2b01228cdb398ec5e
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+	at tests.adminOO.addEntranceExams.AddEntranceExams.addEntranceExams(AddEntranceExams.java:34)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.apache.maven.plugin.surefire.InPluginVMSurefireStarter.runSuitesInProcess(InPluginVMSurefireStarter.java:91)
+	at org.apache.maven.plugin.surefire.AbstractSurefireMojo.executeProvider(AbstractSurefireMojo.java:1212)
+	at org.apache.maven.plugin.surefire.AbstractSurefireMojo.executeAfterPreconditionsChecked(AbstractSurefireMojo.java:1090)
+	at org.apache.maven.plugin.surefire.AbstractSurefireMojo.execute(AbstractSurefireMojo.java:910)
+	at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo(DefaultBuildPluginManager.java:126)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute2(MojoExecutor.java:328)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute(MojoExecutor.java:316)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:212)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:174)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.access$000(MojoExecutor.java:75)
+	at org.apache.maven.lifecycle.internal.MojoExecutor$1.run(MojoExecutor.java:162)
+	at org.apache.maven.plugin.DefaultMojosExecutionStrategy.execute(DefaultMojosExecutionStrategy.java:39)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:159)
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:105)
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:73)
+	at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build(SingleThreadedBuilder.java:53)
+	at org.apache.maven.lifecycle.internal.LifecycleStarter.execute(LifecycleStarter.java:118)
+	at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:261)
+	at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:173)
+	at org.apache.maven.DefaultMaven.execute(DefaultMaven.java:101)
+	at org.apache.maven.cli.MavenCli.execute(MavenCli.java:906)
+	at org.apache.maven.cli.MavenCli.doMain(MavenCli.java:283)
+	at org.apache.maven.cli.MavenCli.main(MavenCli.java:206)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced(Launcher.java:255)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launch(Launcher.java:201)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode(Launcher.java:361)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.main(Launcher.java:314)
+... Removed 32 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1762569016", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1762569016'><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.id: entranceexaminationform-name_subject (tried for 10 second(s) with 500 milliseconds interval)
+Build info: version: &apos;4.33.0&apos;, revision: &apos;2c6aaad03a&apos;
+System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.7&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 143.0.7499.41, chrome: {chromedriverVersion: 143.0.7499.146 (c1224fc40c9..., userDataDir: C:\Users\AE8A3~1.GAR\AppDat...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:65134}, goog:processID: 14540, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:65134/devtoo..., se:cdpVersion: 143.0.7499.41, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: ed0b2a2cfa6c0dd2b01228cdb398ec5e
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+	at tests.adminOO.addEntranceExams.AddEntranceExams.addEntranceExams(AddEntranceExams.java:34)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:228)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:961)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:201)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.testng.TestRunner.privateRun(TestRunner.java:819)
+	at org.testng.TestRunner.run(TestRunner.java:619)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1228)
+	at org.testng.TestNG.runSuites(TestNG.java:1134)
+	at org.testng.TestNG.run(TestNG.java:1101)
+	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:308)
+	at org.apache.maven.surefire.testng.TestNGXmlTestSuite.execute(TestNGXmlTestSuite.java:71)
+	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:113)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.apache.maven.surefire.api.util.ReflectionUtils.invokeMethodWithArray2(ReflectionUtils.java:137)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:148)
+	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:88)
+	at org.apache.maven.plugin.surefire.InPluginVMSurefireStarter.runSuitesInProcess(InPluginVMSurefireStarter.java:91)
+	at org.apache.maven.plugin.surefire.AbstractSurefireMojo.executeProvider(AbstractSurefireMojo.java:1212)
+	at org.apache.maven.plugin.surefire.AbstractSurefireMojo.executeAfterPreconditionsChecked(AbstractSurefireMojo.java:1090)
+	at org.apache.maven.plugin.surefire.AbstractSurefireMojo.execute(AbstractSurefireMojo.java:910)
+	at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo(DefaultBuildPluginManager.java:126)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute2(MojoExecutor.java:328)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute(MojoExecutor.java:316)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:212)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:174)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.access$000(MojoExecutor.java:75)
+	at org.apache.maven.lifecycle.internal.MojoExecutor$1.run(MojoExecutor.java:162)
+	at org.apache.maven.plugin.DefaultMojosExecutionStrategy.execute(DefaultMojosExecutionStrategy.java:39)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:159)
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:105)
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:73)
+	at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build(SingleThreadedBuilder.java:53)
+	at org.apache.maven.lifecycle.internal.LifecycleStarter.execute(LifecycleStarter.java:118)
+	at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:261)
+	at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:173)
+	at org.apache.maven.DefaultMaven.execute(DefaultMaven.java:101)
+	at org.apache.maven.cli.MavenCli.execute(MavenCli.java:906)
+	at org.apache.maven.cli.MavenCli.doMain(MavenCli.java:283)
+	at org.apache.maven.cli.MavenCli.main(MavenCli.java:206)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced(Launcher.java:255)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launch(Launcher.java:201)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode(Launcher.java:361)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.main(Launcher.java:314)
+</pre></div></td>
+<td>10</td>
+<td>tests.adminOO.addEntranceExams.AddEntranceExams@5a342baf</td></tr>
+<tr>
+<td title='tests.adminOO.addEntranceExams.AddEntranceExams.popUp()'><b>popUp</b><br>Test class: tests.adminOO.addEntranceExams.AddEntranceExams</td>
+<td><div><pre>java.lang.AssertionError: The following asserts failed:
+	❌ Попап с текстом &apos;Объект «Вступительные испытания» был создан&apos; не появился на странице за 10 секунд
+	at tests.adminOO.addEntranceExams.AddEntranceExams.popUp(AddEntranceExams.java:68)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.apache.maven.plugin.surefire.InPluginVMSurefireStarter.runSuitesInProcess(InPluginVMSurefireStarter.java:91)
+	at org.apache.maven.plugin.surefire.AbstractSurefireMojo.executeProvider(AbstractSurefireMojo.java:1212)
+	at org.apache.maven.plugin.surefire.AbstractSurefireMojo.executeAfterPreconditionsChecked(AbstractSurefireMojo.java:1090)
+	at org.apache.maven.plugin.surefire.AbstractSurefireMojo.execute(AbstractSurefireMojo.java:910)
+	at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo(DefaultBuildPluginManager.java:126)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute2(MojoExecutor.java:328)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute(MojoExecutor.java:316)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:212)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:174)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.access$000(MojoExecutor.java:75)
+	at org.apache.maven.lifecycle.internal.MojoExecutor$1.run(MojoExecutor.java:162)
+	at org.apache.maven.plugin.DefaultMojosExecutionStrategy.execute(DefaultMojosExecutionStrategy.java:39)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:159)
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:105)
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:73)
+	at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build(SingleThreadedBuilder.java:53)
+	at org.apache.maven.lifecycle.internal.LifecycleStarter.execute(LifecycleStarter.java:118)
+	at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:261)
+	at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:173)
+	at org.apache.maven.DefaultMaven.execute(DefaultMaven.java:101)
+	at org.apache.maven.cli.MavenCli.execute(MavenCli.java:906)
+	at org.apache.maven.cli.MavenCli.doMain(MavenCli.java:283)
+	at org.apache.maven.cli.MavenCli.main(MavenCli.java:206)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced(Launcher.java:255)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launch(Launcher.java:201)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode(Launcher.java:361)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.main(Launcher.java:314)
+... Removed 34 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace711438200", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace711438200'><pre>java.lang.AssertionError: The following asserts failed:
+	❌ Попап с текстом &apos;Объект «Вступительные испытания» был создан&apos; не появился на странице за 10 секунд
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+	at tests.adminOO.addEntranceExams.AddEntranceExams.popUp(AddEntranceExams.java:68)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:228)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:961)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:201)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.testng.TestRunner.privateRun(TestRunner.java:819)
+	at org.testng.TestRunner.run(TestRunner.java:619)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1228)
+	at org.testng.TestNG.runSuites(TestNG.java:1134)
+	at org.testng.TestNG.run(TestNG.java:1101)
+	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:308)
+	at org.apache.maven.surefire.testng.TestNGXmlTestSuite.execute(TestNGXmlTestSuite.java:71)
+	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:113)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.apache.maven.surefire.api.util.ReflectionUtils.invokeMethodWithArray2(ReflectionUtils.java:137)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:148)
+	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:88)
+	at org.apache.maven.plugin.surefire.InPluginVMSurefireStarter.runSuitesInProcess(InPluginVMSurefireStarter.java:91)
+	at org.apache.maven.plugin.surefire.AbstractSurefireMojo.executeProvider(AbstractSurefireMojo.java:1212)
+	at org.apache.maven.plugin.surefire.AbstractSurefireMojo.executeAfterPreconditionsChecked(AbstractSurefireMojo.java:1090)
+	at org.apache.maven.plugin.surefire.AbstractSurefireMojo.execute(AbstractSurefireMojo.java:910)
+	at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo(DefaultBuildPluginManager.java:126)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute2(MojoExecutor.java:328)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute(MojoExecutor.java:316)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:212)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:174)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.access$000(MojoExecutor.java:75)
+	at org.apache.maven.lifecycle.internal.MojoExecutor$1.run(MojoExecutor.java:162)
+	at org.apache.maven.plugin.DefaultMojosExecutionStrategy.execute(DefaultMojosExecutionStrategy.java:39)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:159)
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:105)
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:73)
+	at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build(SingleThreadedBuilder.java:53)
+	at org.apache.maven.lifecycle.internal.LifecycleStarter.execute(LifecycleStarter.java:118)
+	at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:261)
+	at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:173)
+	at org.apache.maven.DefaultMaven.execute(DefaultMaven.java:101)
+	at org.apache.maven.cli.MavenCli.execute(MavenCli.java:906)
+	at org.apache.maven.cli.MavenCli.doMain(MavenCli.java:283)
+	at org.apache.maven.cli.MavenCli.main(MavenCli.java:206)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced(Launcher.java:255)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launch(Launcher.java:201)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode(Launcher.java:361)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.main(Launcher.java:314)
+</pre></div></td>
+<td>13</td>
+<td>tests.adminOO.addEntranceExams.AddEntranceExams@5a342baf</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='tests.adminOO.addScoreEntranceExams.AddScoreEntranceExams.auth()'><b>auth</b><br>Test class: tests.adminOO.addScoreEntranceExams.AddScoreEntranceExams<br>Test method: Авторизация</td>
+<td></td>
+<td>0</td>
+<td>tests.adminOO.addScoreEntranceExams.AddScoreEntranceExams@22796ead</td></tr>
+<tr>
+<td title='tests.adminOO.changeApplicantData.ChangeApplicantData.auth()'><b>auth</b><br>Test class: tests.adminOO.changeApplicantData.ChangeApplicantData<br>Test method: Авторизация</td>
+<td></td>
+<td>0</td>
+<td>tests.adminOO.changeApplicantData.ChangeApplicantData@1b6dab22</td></tr>
+<tr>
+<td title='tests.adminOO.editingUser.EditingUser.checkRequiredFields()'><b>checkRequiredFields</b><br>Test class: tests.adminOO.editingUser.EditingUser</td>
+<td></td>
+<td>2</td>
+<td>tests.adminOO.editingUser.EditingUser@a95807f</td></tr>
+<tr>
+<td title='tests.adminOO.editingUser.EditingUser.goToUserRegistry()'><b>goToUserRegistry</b><br>Test class: tests.adminOO.editingUser.EditingUser</td>
+<td></td>
+<td>0</td>
+<td>tests.adminOO.editingUser.EditingUser@a95807f</td></tr>
+<tr>
+<td title='tests.adminOO.blockingUnblockingUser.BlockingUnblockingUser.auth()'><b>auth</b><br>Test class: tests.adminOO.blockingUnblockingUser.BlockingUnblockingUser<br>Test method: Авторизация</td>
+<td></td>
+<td>0</td>
+<td>tests.adminOO.blockingUnblockingUser.BlockingUnblockingUser@7288afd8</td></tr>
+<tr>
+<td title='tests.adminOO.addScoreEntranceExams.AddScoreEntranceExams.grading()'><b>grading</b><br>Test class: tests.adminOO.addScoreEntranceExams.AddScoreEntranceExams</td>
+<td></td>
+<td>2</td>
+<td>tests.adminOO.addScoreEntranceExams.AddScoreEntranceExams@22796ead</td></tr>
+<tr>
+<td title='tests.adminOO.addGroupsEntranceExams.AddGroupEntranceExams.goToRegistryEntranceExams()'><b>goToRegistryEntranceExams</b><br>Test class: tests.adminOO.addGroupsEntranceExams.AddGroupEntranceExams</td>
+<td></td>
+<td>1</td>
+<td>tests.adminOO.addGroupsEntranceExams.AddGroupEntranceExams@3db8bbbe</td></tr>
+<tr>
+<td title='tests.adminOO.createRoleCOO.CreateRoleCOO.auth()'><b>auth</b><br>Test class: tests.adminOO.createRoleCOO.CreateRoleCOO<br>Test method: Авторизация</td>
+<td></td>
+<td>0</td>
+<td>tests.adminOO.createRoleCOO.CreateRoleCOO@7107a4a3</td></tr>
+<tr>
+<td title='tests.adminOO.changeApplicantData.ChangeApplicantData.openRegistryApplications()'><b>openRegistryApplications</b><br>Test class: tests.adminOO.changeApplicantData.ChangeApplicantData</td>
+<td></td>
+<td>4</td>
+<td>tests.adminOO.changeApplicantData.ChangeApplicantData@1b6dab22</td></tr>
+<tr>
+<td title='tests.adminOO.editingUser.EditingUser.changingData()'><b>changingData</b><br>Test class: tests.adminOO.editingUser.EditingUser</td>
+<td></td>
+<td>0</td>
+<td>tests.adminOO.editingUser.EditingUser@a95807f</td></tr>
+<tr>
+<td title='tests.adminOO.addScoreEntranceExams.AddScoreEntranceExams.addGroupEntranceExams()'><b>addGroupEntranceExams</b><br>Test class: tests.adminOO.addScoreEntranceExams.AddScoreEntranceExams</td>
+<td></td>
+<td>3</td>
+<td>tests.adminOO.addScoreEntranceExams.AddScoreEntranceExams@22796ead</td></tr>
+<tr>
+<td title='tests.adminOO.editingUser.EditingUser.clearFields_2()'><b>clearFields_2</b><br>Test class: tests.adminOO.editingUser.EditingUser</td>
+<td></td>
+<td>0</td>
+<td>tests.adminOO.editingUser.EditingUser@a95807f</td></tr>
+<tr>
+<td title='tests.adminOO.editingUser.EditingUser.popUp()'><b>popUp</b><br>Test class: tests.adminOO.editingUser.EditingUser</td>
+<td></td>
+<td>0</td>
+<td>tests.adminOO.editingUser.EditingUser@a95807f</td></tr>
+<tr>
+<td title='tests.adminOO.changeApplicantData.ChangeApplicantData.changeApplicantData()'><b>changeApplicantData</b><br>Test class: tests.adminOO.changeApplicantData.ChangeApplicantData</td>
+<td></td>
+<td>2</td>
+<td>tests.adminOO.changeApplicantData.ChangeApplicantData@1b6dab22</td></tr>
+<tr>
+<td title='tests.adminOO.addScoreEntranceExams.AddScoreEntranceExams.popUpEntranceExamCreated()'><b>popUpEntranceExamCreated</b><br>Test class: tests.adminOO.addScoreEntranceExams.AddScoreEntranceExams</td>
+<td></td>
+<td>3</td>
+<td>tests.adminOO.addScoreEntranceExams.AddScoreEntranceExams@22796ead</td></tr>
+<tr>
+<td title='tests.adminOO.editingUser.EditingUser.auth()'><b>auth</b><br>Test class: tests.adminOO.editingUser.EditingUser<br>Test method: Авторизация</td>
+<td></td>
+<td>0</td>
+<td>tests.adminOO.editingUser.EditingUser@a95807f</td></tr>
+<tr>
+<td title='tests.adminOO.addGroupsEntranceExams.AddGroupEntranceExams.popUp()'><b>popUp</b><br>Test class: tests.adminOO.addGroupsEntranceExams.AddGroupEntranceExams</td>
+<td></td>
+<td>0</td>
+<td>tests.adminOO.addGroupsEntranceExams.AddGroupEntranceExams@3db8bbbe</td></tr>
+<tr>
+<td title='tests.adminOO.editingUser.EditingUser.clearFields()'><b>clearFields</b><br>Test class: tests.adminOO.editingUser.EditingUser</td>
+<td></td>
+<td>0</td>
+<td>tests.adminOO.editingUser.EditingUser@a95807f</td></tr>
+<tr>
+<td title='tests.adminOO.blockingUnblockingUser.BlockingUnblockingUser.toggleBlocking()'><b>toggleBlocking</b><br>Test class: tests.adminOO.blockingUnblockingUser.BlockingUnblockingUser</td>
+<td></td>
+<td>3</td>
+<td>tests.adminOO.blockingUnblockingUser.BlockingUnblockingUser@7288afd8</td></tr>
+<tr>
+<td title='tests.adminOO.addScoreEntranceExams.AddScoreEntranceExams.staffingGroup()'><b>staffingGroup</b><br>Test class: tests.adminOO.addScoreEntranceExams.AddScoreEntranceExams</td>
+<td></td>
+<td>3</td>
+<td>tests.adminOO.addScoreEntranceExams.AddScoreEntranceExams@22796ead</td></tr>
+<tr>
+<td title='tests.adminOO.createRoleCOO.CreateRoleCOO.popUp()'><b>popUp</b><br>Test class: tests.adminOO.createRoleCOO.CreateRoleCOO</td>
+<td></td>
+<td>0</td>
+<td>tests.adminOO.createRoleCOO.CreateRoleCOO@7107a4a3</td></tr>
+<tr>
+<td title='tests.adminOO.changeApplicantData.ChangeApplicantData.assertChangedFields()'><b>assertChangedFields</b><br>Test class: tests.adminOO.changeApplicantData.ChangeApplicantData</td>
+<td></td>
+<td>0</td>
+<td>tests.adminOO.changeApplicantData.ChangeApplicantData@1b6dab22</td></tr>
+<tr>
+<td title='tests.adminOO.addScoreEntranceExams.AddScoreEntranceExams.addEntranceExams()'><b>addEntranceExams</b><br>Test class: tests.adminOO.addScoreEntranceExams.AddScoreEntranceExams</td>
+<td></td>
+<td>1</td>
+<td>tests.adminOO.addScoreEntranceExams.AddScoreEntranceExams@22796ead</td></tr>
+<tr>
+<td title='tests.adminOO.createRoleCOO.CreateRoleCOO.goToCreatingUser()'><b>goToCreatingUser</b><br>Test class: tests.adminOO.createRoleCOO.CreateRoleCOO</td>
+<td></td>
+<td>0</td>
+<td>tests.adminOO.createRoleCOO.CreateRoleCOO@7107a4a3</td></tr>
+<tr>
+<td title='tests.adminOO.addScoreEntranceExams.AddScoreEntranceExams.goToAddEntranceExams()'><b>goToAddEntranceExams</b><br>Test class: tests.adminOO.addScoreEntranceExams.AddScoreEntranceExams</td>
+<td></td>
+<td>0</td>
+<td>tests.adminOO.addScoreEntranceExams.AddScoreEntranceExams@22796ead</td></tr>
+<tr>
+<td title='tests.adminOO.addScoreEntranceExams.AddScoreEntranceExams.popUpGroupCreated()'><b>popUpGroupCreated</b><br>Test class: tests.adminOO.addScoreEntranceExams.AddScoreEntranceExams</td>
+<td></td>
+<td>0</td>
+<td>tests.adminOO.addScoreEntranceExams.AddScoreEntranceExams@22796ead</td></tr>
+<tr>
+<td title='tests.adminOO.editingUser.EditingUser.checkComparisonFields()'><b>checkComparisonFields</b><br>Test class: tests.adminOO.editingUser.EditingUser</td>
+<td></td>
+<td>0</td>
+<td>tests.adminOO.editingUser.EditingUser@a95807f</td></tr>
+<tr>
+<td title='tests.adminOO.addGroupsEntranceExams.AddGroupEntranceExams.addGroupEntranceExams()'><b>addGroupEntranceExams</b><br>Test class: tests.adminOO.addGroupsEntranceExams.AddGroupEntranceExams</td>
+<td></td>
+<td>0</td>
+<td>tests.adminOO.addGroupsEntranceExams.AddGroupEntranceExams@3db8bbbe</td></tr>
+<tr>
+<td title='tests.adminOO.createRoleCOO.CreateRoleCOO.addUserCOO()'><b>addUserCOO</b><br>Test class: tests.adminOO.createRoleCOO.CreateRoleCOO</td>
+<td></td>
+<td>1</td>
+<td>tests.adminOO.createRoleCOO.CreateRoleCOO@7107a4a3</td></tr>
+<tr>
+<td title='tests.adminOO.blockingUnblockingUser.BlockingUnblockingUser.goToUserRegistry()'><b>goToUserRegistry</b><br>Test class: tests.adminOO.blockingUnblockingUser.BlockingUnblockingUser</td>
+<td></td>
+<td>0</td>
+<td>tests.adminOO.blockingUnblockingUser.BlockingUnblockingUser@7288afd8</td></tr>
+<tr>
+<td title='tests.adminOO.addGroupsEntranceExams.AddGroupEntranceExams.auth()'><b>auth</b><br>Test class: tests.adminOO.addGroupsEntranceExams.AddGroupEntranceExams<br>Test method: Авторизация</td>
+<td></td>
+<td>0</td>
+<td>tests.adminOO.addGroupsEntranceExams.AddGroupEntranceExams@3db8bbbe</td></tr>
+<tr>
+<td title='tests.adminOO.addEntranceExams.AddEntranceExams.auth()'><b>auth</b><br>Test class: tests.adminOO.addEntranceExams.AddEntranceExams<br>Test method: Авторизация</td>
+<td></td>
+<td>0</td>
+<td>tests.adminOO.addEntranceExams.AddEntranceExams@5a342baf</td></tr>
+</table><p>
+</body>
+</html>

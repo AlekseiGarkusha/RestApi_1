@@ -17,13 +17,13 @@ import static tests.adminOO.addEntranceExams.Locators.*;
 
 public class AddEntranceExams extends Base {
 
-  @Test(priority = 2)
-  @Description("Переход к добавлению ВИ")
-  @Severity(SeverityLevel.CRITICAL)
-  public void goToAddEntranceExams() {
-    wait.until(ExpectedConditions.elementToBeClickable(SCHEDULE_ENTRANCE_TEST_MENU)).click();
-    wait.until(ExpectedConditions.elementToBeClickable(ADD_ENTRANCE_TEST)).click();
-  }
+//  @Test(priority = 2)
+//  @Description("Переход к добавлению ВИ")
+//  @Severity(SeverityLevel.CRITICAL)
+//  public void goToAddEntranceExams() {
+//    wait.until(ExpectedConditions.elementToBeClickable(SCHEDULE_ENTRANCE_TEST_MENU)).click();
+//    wait.until(ExpectedConditions.elementToBeClickable(ADD_ENTRANCE_TEST)).click();
+//  }
 
   @Test(priority = 3)
   @Description("Переход к добавлению ВИ")

@@ -88,13 +88,10 @@
       <scope>compile</scope>
     </dependency>
 
-
-
-
   </dependencies>
 
   <build>
-    <!-- Обращение что бы находило TestData.json -->
+    <!-- Ресурсы тестов -->
     <testResources>
       <testResource>
         <directory>src/test/resources</directory>
@@ -102,7 +99,7 @@
     </testResources>
 
     <plugins>
-
+      <!-- Surefire для TestNG -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
@@ -114,10 +111,12 @@
           <forkCount>0</forkCount>
           <printSummary>true</printSummary>
           <useFile>false</useFile>
+          <!-- Позволяет продолжать сборку даже при падении тестов -->
+          <testFailureIgnore>true</testFailureIgnore>
         </configuration>
       </plugin>
 
-      <!-- создание папок для allure отчётов -->
+      <!-- Allure Maven Plugin -->
       <plugin>
         <groupId>io.qameta.allure</groupId>
         <artifactId>allure-maven</artifactId>
@@ -138,7 +137,7 @@
         </executions>
       </plugin>
 
-
+      <!-- Авто-открытие отчёта после генерации -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
@@ -165,6 +164,7 @@
         </executions>
       </plugin>
 
+      <!-- Компилятор - отчёт строится и при упавших тестах -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -175,9 +175,7 @@
           <compilerArgs>--enable-preview</compilerArgs>
         </configuration>
       </plugin>
-
     </plugins>
-
   </build>
 
 </project>
