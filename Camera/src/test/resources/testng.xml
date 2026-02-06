@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All tests">
+
+  <test name="Analitic-tests">
+    <parameter name="browser" value="chrome"/>
+    <classes>
+      <class name="tests.CheckingForPartitions_IT"/>
+
+      <class name="tests.MonitoringZone.ViewCards_IT"/>
+      <class name="tests.MonitoringZone.ChangeStatus_IT"/>
+      <class name="tests.MonitoringZone.OpenRegistryZony_IT"/>
+      <class name="tests.MonitoringZone.MonitoringZoneCreate_IT"/>
+      <class name="tests.MonitoringZone.ComparisonFields_IT"/>
+      <class name="tests.MonitoringZone.SingleResultFunctionButtons_IT"/>
+    </classes>
+  </test>
+</suite>
