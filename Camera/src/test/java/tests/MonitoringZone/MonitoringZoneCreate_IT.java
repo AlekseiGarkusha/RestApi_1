@@ -61,7 +61,7 @@ public class MonitoringZoneCreate_IT extends Base {
     $x(MUNICIPALITY_SYMFEROPOL).click();
 
     $x(CAMERA_FIELD).click();
-    $x(CAMERA_CHOICE_KFU).click();
+    $x(CAMERA_CHOICE_159).click();
 
     $x(BTN_CAPTURE_FRAME).click();
     Thread.sleep(2000);

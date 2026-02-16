@@ -20,6 +20,7 @@ import org.testng.annotations.Test;
 
 import org.testng.asserts.SoftAssert;
 import setup.BaseRegistration;
+import tests.registration.registrationClassic.steps.*;
 import tests.registration.registrationClassic.steps.step_1.MainStep_1;
 import tests.registration.registrationClassic.steps.step_2.MainStep_2;
 import tests.registration.registrationClassic.steps.step_3.MainStep_3;

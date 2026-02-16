@@ -22,6 +22,7 @@ public class Locators {
 
   public static String CAMERA_FIELD = "//h3[normalize-space(text())='Камера *']/parent::div/following-sibling::div[contains(@class,'select-arrow')]";
   public static String CAMERA_CHOICE_KFU = "//div[contains(@class,'input-box-content') and contains(@class,'option-item') and normalize-space(text())='КФУ 3']";
+  public static String CAMERA_CHOICE_159 = "//div[contains(@class,'input-box-content') and contains(@class,'option-item') and normalize-space(text())='Победы /Кечкеметская 159']";
 
   public static String BTN_CAPTURE_FRAME = "//button[contains(text(),'Захватить кадр')]";
   public static String BTN_SAVE = "//button[contains(text(),'Сохранить')]";

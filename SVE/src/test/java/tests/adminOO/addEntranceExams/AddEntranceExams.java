@@ -25,7 +25,7 @@ public class AddEntranceExams extends Base {
     wait.until(ExpectedConditions.elementToBeClickable(ADD_ENTRANCE_TEST)).click();
   }
 
-  
+
   @Test(priority = 3)
   @Description("Переход к добавлению ВИ")
   @Severity(SeverityLevel.CRITICAL)

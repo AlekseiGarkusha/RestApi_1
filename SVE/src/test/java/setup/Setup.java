@@ -27,7 +27,7 @@ public class Setup {
     if (driver == null) {
       ChromeOptions options = new ChromeOptions();
       options.setCapability("browserName", "chrome");
-      options.addArguments("--headless=new");                            /// отображение браузера или скрытие
+//      options.addArguments("--headless=new");                            /// отображение браузера или скрытие
       options.addArguments("--no-sandbox");
       options.addArguments("--disable-dev-shm-usage");
       options.addArguments("--disable-gpu");
