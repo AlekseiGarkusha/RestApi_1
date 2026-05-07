@@ -6,7 +6,7 @@
  * Удаление файла - проверка что файл действительно был удалён
  */
 
-package tests.MonitoringZone;
+package tests._base.MonitoringZone;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
@@ -22,7 +22,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import setup.Auth;
-import setup.Base;
+import setup.TestBase;
 
 import java.io.File;
 
@@ -34,7 +34,7 @@ import static data.Btn.DELETION_SINGLE_BTN;
 import static data.Locators.*;
 import static io.restassured.RestAssured.given;
 
-public class SingleResultFunctionButtons_IT extends Base {
+public class SingleResultFunctionButtons_IT extends TestBase {
 
   private String idCard;
 
@@ -52,7 +52,7 @@ public class SingleResultFunctionButtons_IT extends Base {
     $x(MONITORING_ZONY).shouldBe(visible).click();
     Thread.sleep(2000);
 
-    ElementsCollection rows = $$("tr.enabled");
+    ElementsCollection rows = $$("tr .enabled");
 
     SelenideElement targetRow = null;
 
@@ -67,7 +67,7 @@ public class SingleResultFunctionButtons_IT extends Base {
       }
     }
 
-    targetRow.$x(".//a[.//div[normalize-space(text())='посмотреть результаты']]").click();
+    targetRow.$x("//a[.//div[normalize-space(text())='посмотреть результаты']]").click();
   }
 
   @Test(priority = 3)

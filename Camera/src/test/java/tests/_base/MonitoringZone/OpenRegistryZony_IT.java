@@ -1,20 +1,20 @@
 /* Тест проверки открытия реестра "Мониторинга зоны"*/
 
-package tests.MonitoringZone;
+package tests._base.MonitoringZone;
 
 import data.DataTitle;
 import jdk.jfr.Description;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import setup.Auth;
-import setup.Base;
+import setup.TestBase;
 import data.UserData;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 import static data.Locators.MONITORING_ZONY;
 
-public class OpenRegistryZony_IT extends Base {
+public class OpenRegistryZony_IT extends TestBase {
 
   @Test(priority = 1)
   @Description("Авторизация")

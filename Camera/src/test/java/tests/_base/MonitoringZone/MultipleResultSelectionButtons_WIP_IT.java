@@ -1,4 +1,4 @@
-package tests.MonitoringZone;
+package tests._base.MonitoringZone;
 
 import com.codeborne.selenide.SelenideElement;
 import data.UserData;
@@ -9,7 +9,7 @@ import jdk.jfr.Description;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import setup.Auth;
-import setup.Base;
+import setup.TestBase;
 
 
 import static com.codeborne.selenide.Condition.visible;
@@ -21,7 +21,7 @@ import static data.UserData.LOGIN_ANALITIK_ITM;
 
 /// WIP
 
-public class MultipleResultSelectionButtons_WIP_IT extends Base {
+public class MultipleResultSelectionButtons_WIP_IT extends TestBase {
 
   @BeforeClass
   void setup() {

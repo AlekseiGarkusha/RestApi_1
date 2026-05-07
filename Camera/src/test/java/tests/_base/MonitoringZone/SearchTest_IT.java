@@ -5,7 +5,7 @@
  * Тест проверяет только позитивную проверку
  */
 
-package tests.MonitoringZone;
+package tests._base.MonitoringZone;
 
 import com.codeborne.selenide.SelenideElement;
 import jdk.jfr.Description;

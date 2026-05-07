@@ -5,7 +5,7 @@
  * Проверку на успешный popUp
  */
 
-package tests.MonitoringZone;
+package tests._base.MonitoringZone;
 
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
@@ -18,7 +18,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import setup.Auth;
-import setup.Base;
+import setup.TestBase;
 import data.UserData;
 import utils.PopUpUtils;
 
@@ -27,7 +27,7 @@ import static com.codeborne.selenide.Selenide.*;
 import static data.Constants.*;
 import static data.Locators.*;
 
-public class MonitoringZoneCreate_IT extends Base {
+public class MonitoringZoneCreate_IT extends TestBase {
 
   @Test (priority = 1)
   @Description("Авторизация")

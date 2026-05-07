@@ -5,14 +5,13 @@
   <test name="Analitic-tests">
     <parameter name="browser" value="chrome"/>
     <classes>
-      <class name="tests.CheckingForPartitions_IT"/>
-
-      <class name="tests.MonitoringZone.ViewCards_IT"/>
-      <class name="tests.MonitoringZone.ChangeStatus_IT"/>
-      <class name="tests.MonitoringZone.OpenRegistryZony_IT"/>
-      <class name="tests.MonitoringZone.MonitoringZoneCreate_IT"/>
-      <class name="tests.MonitoringZone.ComparisonFields_IT"/>
-      <class name="tests.MonitoringZone.SingleResultFunctionButtons_IT"/>
+      <class name="tests._base.CheckingForPartitions_IT"/>
+      <class name="tests._base.MonitoringZone.ViewCards_IT"/>
+      <class name="tests._base.MonitoringZone.ChangeStatus_IT"/>
+      <class name="tests._base.MonitoringZone.OpenRegistryZony_IT"/>
+      <class name="tests._base.MonitoringZone.MonitoringZoneCreate_IT"/>
+      <class name="tests._base.MonitoringZone.ComparisonFields_IT"/>
+      <class name="tests._base.MonitoringZone.SingleResultFunctionButtons_IT"/>
     </classes>
   </test>
 </suite>

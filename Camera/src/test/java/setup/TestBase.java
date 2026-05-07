@@ -15,7 +15,7 @@
 
   import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-  public class Base{
+  public class TestBase {
 
     private static String BASE_URL = "https://itmrk.krtech.ru/";
 

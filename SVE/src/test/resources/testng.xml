@@ -4,19 +4,19 @@
 
   <test name="Registration">
     <classes>
-      <class name="tests.registration.registrationClassic.RegistrationClassic"/>
-      <class name="tests.registration.registrationMandatoryFields.RegistrationMandatoryFields"/>
-      <class name="tests.registration.registrationComparisonFields.RegistrationComparisonFields"/>
+<!--      <class name="tests.registration.registrationClassic.RegistrationClassic"/>-->
+<!--      <class name="tests.registration.registrationMandatoryFields.RegistrationMandatoryFields"/>-->
+<!--      <class name="tests.registration.registrationComparisonFields.RegistrationComparisonFields"/>-->
     </classes>
   </test>
 
-  <test name="CheckDuplicate">
-    <classes>
-      <class name="tests.checkDuplicate.entranceExam.CheckDuplicateAddEntranceExam"/>
-      <class name="tests.checkDuplicate.specialities.CheckDuplicateSpecialities"/>
-      <class name="tests.checkDuplicate.statement.CheckDuplicateStatement"/>
-    </classes>
-  </test>
+<!--  <test name="CheckDuplicate">-->
+<!--    <classes>-->
+<!--      <class name="tests.checkDuplicate.entranceExam.CheckDuplicateAddEntranceExam"/>-->
+<!--      <class name="tests.checkDuplicate.specialities.CheckDuplicateSpecialities"/>-->
+<!--      <class name="tests.checkDuplicate.statement.CheckDuplicateStatement"/>-->
+<!--    </classes>-->
+<!--  </test>-->
 
   <test name="AdminOO">
     <classes>

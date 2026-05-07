@@ -2,7 +2,7 @@
 * Тест сравнения привязки полей -- вводимых при добавлении зоны с полями в карточке
 */
 
-package tests.MonitoringZone;
+package tests._base.MonitoringZone;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;

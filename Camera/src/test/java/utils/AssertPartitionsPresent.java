@@ -1,4 +1,6 @@
-/** Util -  для поиска небходимых разделов*/
+/**
+ * Util -  для поиска небходимых разделов
+ */
 
 package utils;
 
@@ -17,8 +19,9 @@ public class AssertPartitionsPresent extends BaseSteps {
   public void assertPartitionsPresent(String[] hints) {
 
     String pageSource = $("body").getText();
-      for (String hint : hints) {
-        softAssert.assertTrue(pageSource.contains(hint), "❌ Ожидалась подсказка: " + hint);
-      }
+    System.out.println(pageSource);
+    for (String hint : hints) {
+      softAssert.assertTrue(pageSource.contains(hint), "❌ Ожидались другие поля: " + hint);
     }
   }
+}
