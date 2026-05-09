@@ -12,7 +12,7 @@ allure-results/
 
 # ===== Logs =====
 *.log
-
+hs_err_pid*
 
 # ===== Java =====
 *.class
