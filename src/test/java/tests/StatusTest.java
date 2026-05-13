@@ -11,7 +11,7 @@ public class StatusTest {
 
   // Если разработчик изменит код - то тест упадёт
   @Test
-  void statusCodeIs200() {
+  void authStatusTest() {
     given()
       .auth().basic("user1", "1234")
       .when()
@@ -21,9 +21,8 @@ public class StatusTest {
   }
 
   @Test
-  void bodyStructure() {
+  void bodyStructureTest() {
     given()
-      //      .log().all()
       .auth().basic("user1", "1234")
       .when()
       .get("https://selenoid.autotests.cloud/wd/hub/status")
@@ -47,14 +46,9 @@ public class StatusTest {
   }
 
   @Test
-  public void keyValueTest() {
+  public void statusResponseValuesTest() {
     given()
-      //      .log().all()
-      //      .log().uri()
-      //      .log().method()
-      //      .log().headers()
       .auth().basic("user1", "1234")
-
       .when()
       .get("https://selenoid.autotests.cloud/wd/hub/status")
       .then()
