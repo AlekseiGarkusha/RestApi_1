@@ -1,12 +1,14 @@
 package models.pojo;
 
 import com.github.javafaker.Faker;
+import io.restassured.http.ContentType;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.hasKey;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RegistrationTest__pojo_model {
 
@@ -37,7 +39,7 @@ public class RegistrationTest__pojo_model {
       .then()
       .log().all()
       .statusCode(200)
-      .body("total",is(5));
+      .body("total", is(5));
   }
 
   @Test
@@ -70,34 +72,63 @@ public class RegistrationTest__pojo_model {
   }
 
   @Test
-  void successfulRegistrationTest_with_lombok() {
+  void successfulRegistrationTest_with_pojo() {
     Faker faker = new Faker();
+    String username = faker.name().firstName();
+    String password = faker.name().firstName();
+
     RegistrationBodyPojoModel data = new RegistrationBodyPojoModel();
 
-//   data.setUserName(data.userName);
-//   data.set
+    data.setUsername(username);
+    data.setPassword(password);
+
+//    String data = "{\"username\": \"" + userName + "\"," + "\"password\": \""+ password +"\"}";
+      given()
+        .body(data)
+        .log().all()
+        .header("Content-Type", "application/json")
+        .contentType(ContentType.JSON)
+        .accept(ContentType.JSON)
+        .when()
+        .post("https://book-club.qa.guru/api/v1/users/register/")
+        .then()
+        .log().all()
+        .statusCode(201)
+        .body("username", is(username));
+
+//    assertEquals(username, registrationResponseBodyPojoModel.getUserName());
+  }
+
+  @Test
+  void successfulRegistrationResponseTest_with_pojo() {
+    Faker faker = new Faker();
+    String username = faker.name().firstName();
+    String password = faker.name().firstName();
+
+    RegistrationBodyPojoModel data = new RegistrationBodyPojoModel();
+
+    data.setUsername(username);
+    data.setPassword(password);
 
 //    String data = "{\"username\": \"" + userName + "\"," + "\"password\": \""+ password +"\"}";
 
-//    RegistrationBodyPojoModel data = new RegistrationBodyPojoModel();
-//    data.setUserName(userName);
-//    data.setPassword(password);
+    RegistrationResponseBodyPojoModel registrationResponseBodyPojoModel =
+      given()
+        .body(data)
+        .log().all()
+        .header("Content-Type", "application/json")
+        .contentType(ContentType.JSON)
+        .accept(ContentType.JSON)
+        .when()
+        .post("https://book-club.qa.guru/api/v1/users/register/")
+        .then()
+        .log().all()
+        .statusCode(201)
+        .extract()
+        .as(RegistrationResponseBodyPojoModel.class);
 
-
-//    given()
-//      .body(data)
-//      .log().all()
-//      .header("Content-Type", "application/json")
-//      .contentType(ContentType.JSON)
-//      .accept(ContentType.JSON)
-//      .when()
-//      .post("http://bookclub.qa.guru:8000/api/v1/users/register/")
-//      .then()
-//      .log().all()
-//      .statusCode(502)
-//      .body("username", is(userName))
-//      .body("id", notNullValue());
-//  }
-
+    assertEquals(username, registrationResponseBodyPojoModel. getUsername());
   }
+
+
 }

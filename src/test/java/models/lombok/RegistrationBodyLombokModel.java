@@ -9,12 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class RegistrationBodyLombokModel {
 
-  Integer id;
-  String userName;
-  String firstName;
-  String lastName;
-  String email;
-  String remoteAddr;
+  String username;
+  String password;
 
 }
 
