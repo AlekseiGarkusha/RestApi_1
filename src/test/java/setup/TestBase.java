@@ -7,7 +7,7 @@ public class TestBase {
 
   @BeforeEach
   public void setUp() {
-    RestAssured.baseURI = "https://selenoid.autotests.cloud";
+    RestAssured.baseURI = "http://bookclub.qa.guru:8000";
   }
 
 }
