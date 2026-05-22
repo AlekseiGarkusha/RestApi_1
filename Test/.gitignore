@@ -1,0 +1,39 @@
+# ===== Gradle =====
+.gradle/
+build/
+
+# ===== IntelliJ =====
+.idea/
+*.iml
+out/
+
+# ===== Allure =====
+allure-results/
+
+# ===== Logs =====
+*.log
+hs_err_pid*
+.github/workflows/
+app/
+
+# ===== Java =====
+*.class
+*.jar
+*.war
+*.ear
+
+# ===== OS =====
+.DS_Store
+Thumbs.db
+
+# ===== Crash logs =====
+hs_err_pid*
+replay_pid*
+
+# ===== Gradle cache =====
+.gradletasknamecache
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build
