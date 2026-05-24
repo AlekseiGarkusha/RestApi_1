@@ -1,4 +1,4 @@
-package models.pojo;
+package models.registration.model_examples.pojo;
 
 public class RegistrationBodyPojoModel {
 

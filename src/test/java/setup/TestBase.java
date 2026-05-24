@@ -7,7 +7,8 @@ public class TestBase {
 
   @BeforeEach
   public void setUp() {
-    RestAssured.baseURI = "http://bookclub.qa.guru:8000";
+    RestAssured.baseURI = "https://book-club.qa.guru";
+    System.setProperty("https.protocols", "TLSv1.2");
   }
 
 }

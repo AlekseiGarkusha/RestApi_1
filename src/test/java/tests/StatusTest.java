@@ -42,7 +42,7 @@ public class StatusTest {
       .get("https://selenoid.autotests.cloud/wd/hub/status")
       .then()
       .statusCode(200)
-      .body(matchesJsonSchemaInClasspath("statusResponce_Schema.json"));
+      .body(matchesJsonSchemaInClasspath("login/statusResponce_login_Schema.json"));
   }
 
   @Test

@@ -1,4 +1,4 @@
-package models.lombok;
+package models.registration.model_examples.lombok;
 
 import com.github.javafaker.Faker;
 import io.restassured.http.ContentType;

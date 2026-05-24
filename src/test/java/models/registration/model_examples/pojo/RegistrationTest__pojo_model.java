@@ -1,4 +1,4 @@
-package models.pojo;
+package models.registration.model_examples.pojo;
 
 import com.github.javafaker.Faker;
 import io.restassured.http.ContentType;
