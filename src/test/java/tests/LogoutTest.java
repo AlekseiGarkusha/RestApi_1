@@ -1,6 +1,7 @@
 package tests;
 
 import models.login.LoginBodyModel;
+
 import org.junit.jupiter.api.Test;
 import setup.TestBase;
 
@@ -8,10 +9,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
+import static org.hamcrest.Matchers.notNullValue;
 import static spec.loginSpec.LoginSpec.loginRequestSpec;
-import static spec.loginSpec.LoginSpec.successfulLoginResponseSpec;
 
-public class Logout_test extends TestBase {
+public class LogoutTest extends TestBase {
 
   @Test
   public void successfulLogoutTest() {
@@ -25,14 +27,15 @@ public class Logout_test extends TestBase {
       given()
         .spec(loginRequestSpec)
         .body(loginData)
-        .basePath("/api/v1")
         .when()
         .post("/auth/token/")
         .then()
         .statusCode(200)
-        .spec(successfulLoginResponseSpec)
-        .extract()
-        .path("refresh");
+        .body(matchesJsonSchemaInClasspath("registration/successfull_registration_response_schema.json"))
+        .body("access", notNullValue())
+        .body("refresh", notNullValue())
+        .extract().path("refresh");
+
 
     /// LOGOUT BODY
     Map<String, String> logoutBody = new HashMap<>();

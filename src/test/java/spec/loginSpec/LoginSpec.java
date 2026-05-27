@@ -19,11 +19,7 @@ public class LoginSpec {
     .basePath("/api/v1");
 
   public static ResponseSpecification successfulLoginResponseSpec = new ResponseSpecBuilder()
-    .log(ALL)
-    .expectStatusCode(200)
-    .expectBody(matchesJsonSchemaInClasspath("registration/successfull_registration_response_schema.json"))
-    .expectBody("access", notNullValue())
-    .expectBody("refresh", notNullValue())
+
     .build();
 
   public static ResponseSpecification wrongRegistrationLoginSpec = new ResponseSpecBuilder()

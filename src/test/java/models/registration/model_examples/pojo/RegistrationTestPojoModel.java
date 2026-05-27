@@ -10,7 +10,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.hasKey;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class RegistrationTest__pojo_model {
+public class RegistrationTestPojoModel {
 
   @Test
   void totalAmountTest_withResponseLogs() {

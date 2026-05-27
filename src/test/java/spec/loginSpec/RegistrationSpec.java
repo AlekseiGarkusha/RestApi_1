@@ -14,19 +14,15 @@ public class RegistrationSpec {
     new ResponseSpecBuilder()
       .log(ALL)
       .expectStatusCode(201)
-//      .expectBody(matchesJsonSchemaInClasspath(
-//        "registration/successfull_registration_response_createUser_Schema.json"))
+      .expectBody(matchesJsonSchemaInClasspath(
+        "registration/successfull_registration_response_createUser_Schema.json"))
       .expectBody("id", notNullValue())
       .expectBody("username", notNullValue())
+      .expectBody("firstName", notNullValue())
+      .expectBody("email", notNullValue())
       .expectBody("remoteAddr", notNullValue())
       .build();
 
-  public static ResponseSpecification wrongRegistrationEmptyValuesSpec = new ResponseSpecBuilder()
-    .log(ALL)
-    .expectStatusCode(400)
-    .expectBody(matchesJsonSchemaInClasspath("registration/negative_registration_response_test_emptyValues.json"))
-    .expectBody("username", CoreMatchers.notNullValue())
-    .expectBody("password", CoreMatchers.notNullValue())
-    .build();
+
 
 }

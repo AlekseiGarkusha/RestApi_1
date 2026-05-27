@@ -1,3 +1,6 @@
 package models.login;
 
-public record LoginResponseModel(String access, String refresh, String detail) {}
+public record LoginResponseModel(
+  String id, String username,
+  String firstName, String lastName,
+  String email, String remoteAddr) {}

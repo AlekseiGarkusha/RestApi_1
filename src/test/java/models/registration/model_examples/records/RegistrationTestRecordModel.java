@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class RegistrationTest__record_model {
+public class RegistrationTestRecordModel {
 
   @Test
   public void successfulRegistrationTest_with_record() {

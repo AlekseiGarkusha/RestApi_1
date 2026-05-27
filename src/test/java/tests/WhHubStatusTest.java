@@ -12,7 +12,7 @@ public class WhHubStatusTest extends TestBase {
     given()
       .auth().basic("user1", "1234")
       .when()
-      .get("/wd/hub/status")
+      .get("https://selenoid.autotests.cloud/wd/hub/status")
       .then()
       .statusCode(200);
   }

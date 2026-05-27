@@ -9,7 +9,6 @@ import models.registration.create.SuccessfulRegistrationResponseModel;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import setup.TestBase;
-
 import java.util.List;
 
 import static io.restassured.RestAssured.given;
@@ -17,6 +16,7 @@ import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInC
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static spec.loginSpec.BaseSpecs.baseRequestSpec;
 
 public class RegistrationTests extends TestBase {
 
@@ -31,14 +31,12 @@ public class RegistrationTests extends TestBase {
 
     SuccessfulRegistrationResponseModel registrationResponse =
       given()
-        .log().all()
-        .contentType(ContentType.JSON)
+        .spec(baseRequestSpec)
         .body(loginData)
-        .basePath("/api/v1")
         .when()
         .post("/users/register/")
         .then()
-        .log().all()  
+        .log().all()
         .statusCode(201)
         .body(matchesJsonSchemaInClasspath(
           "registration/successfull_registration_response_createUser_Schema.json"))
@@ -62,10 +60,8 @@ public class RegistrationTests extends TestBase {
 
     OnlyUserNameResponseModel registrationResponse =
       given()
-        .log().all()
-        .contentType(ContentType.JSON)
+        .spec(baseRequestSpec)
         .body(loginData)
-        .basePath("/api/v1")
         .when()
         .post("/users/register/")
         .then()
@@ -87,10 +83,8 @@ public class RegistrationTests extends TestBase {
 
     OnlyUserNameResponseModel registrationResponse =
       given()
-        .log().all()
-        .contentType(ContentType.JSON)
+        .spec(baseRequestSpec)
         .body(loginData)
-        .basePath("/api/v1")
         .when()
         .post("/users/register/")
         .then()
