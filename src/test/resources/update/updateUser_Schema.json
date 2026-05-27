@@ -3,23 +3,15 @@
   "title": "Generated schema for Root",
   "type": "object",
   "properties": {
+    "id": {
+      "type": "number"
+    },
     "username": {
-      "type": "string"
-    },
-    "firstName": {
-      "type": "string"
-    },
-    "lastName": {
-      "type": "string"
-    },
-    "email": {
       "type": "string"
     }
   },
   "required": [
-    "username",
-    "firstName",
-    "lastName",
-    "email"
+    "id",
+    "username"
   ]
 }

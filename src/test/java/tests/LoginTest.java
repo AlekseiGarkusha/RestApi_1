@@ -11,9 +11,7 @@ import setup.TestBase;
 
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
-import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.Matchers.notNullValue;
 import static spec.loginSpec.LoginSpec.*;
 import static spec.loginSpec.RegistrationSpec.classicRegistrationSpec;
 
@@ -34,13 +32,14 @@ public class LoginTest extends TestBase {
         .spec(loginRequestSpec)
         .body(registrationData)
         .when()
-        .post("/users/register/")
+        .post("/auth/token/")
         .then()
         .log().all()
         .spec(classicRegistrationSpec)
         .extract().as(LoginResponseModel.class)
 
     );
+
     System.out.println(RestAssured.baseURI);
     step("Проверки", () -> {
 //      String expectedTokenPath = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9";

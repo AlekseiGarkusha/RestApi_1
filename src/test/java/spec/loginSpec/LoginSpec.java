@@ -18,10 +18,6 @@ public class LoginSpec {
     .contentType(ContentType.JSON)
     .basePath("/api/v1");
 
-  public static ResponseSpecification successfulLoginResponseSpec = new ResponseSpecBuilder()
-
-    .build();
-
   public static ResponseSpecification wrongRegistrationLoginSpec = new ResponseSpecBuilder()
     .log(ALL)
     .expectStatusCode(401)
