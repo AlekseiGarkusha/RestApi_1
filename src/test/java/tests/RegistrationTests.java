@@ -91,7 +91,6 @@ public class RegistrationTests extends TestBase {
     LoginBodyModel loginData =
       step("Предусловия", () ->
         new LoginBodyModel("", password)
-
       );
     List<String> expectedMessage = List.of("This field may not be blank.");
 
