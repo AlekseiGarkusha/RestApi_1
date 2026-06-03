@@ -35,51 +35,55 @@ public class UpdateUserTest extends TestBase {
       updateId, updateUsername, updateFirstName,
       updateLastName, updateEmail, updateAddr);
 
-    SuccessfulRegistrationResponseModel registrationResponse = step("Регистрация нового пользователя", () ->
-      given()
-        .spec(baseRequestSpec)
-        .body(userData)
-        .when()
-        .post("/users/register/")
-        .then()
-        .statusCode(201)
-        .extract()
-        .as(SuccessfulRegistrationResponseModel.class)
-    );
+    SuccessfulRegistrationResponseModel registrationResponse =
+      step("Регистрация нового пользователя",
+        () -> given()
+          .spec(baseRequestSpec)
+          .body(userData)
+          .when()
+          .post("/users/register/")
+          .then()
+          .statusCode(201)
+          .extract()
+          .as(SuccessfulRegistrationResponseModel.class)
+      );
 
-    LoginResponseModel loginResponse = step("Авторизация", () ->
-      given()
-        .spec(baseRequestSpec)
-        .body(userData)
-        .when()
-        .post("/auth/token/")
-        .then()
-        .statusCode(200)
-        .extract()
-        .as(LoginResponseModel.class)
-    );
+    LoginResponseModel loginResponse =
+      step("Авторизация",
+        () -> given()
+          .spec(baseRequestSpec)
+          .body(userData)
+          .when()
+          .post("/auth/token/")
+          .then()
+          .statusCode(200)
+          .extract()
+          .as(LoginResponseModel.class)
+      );
 
     String token = loginResponse.access();
 
-    UpdateResponseModel updateResponseModel = step("Обновление данных пользователя метод PATCH", () ->
-      given()
+    UpdateResponseModel updateResponseModel =
+      step("Обновление данных пользователя метод PATCH",
+        () -> given()
+          .spec(baseRequestSpec)
+          .header("Authorization", "Bearer " + token)
+          .body(updateUserData)
+          .when()
+          .patch("/users/me/")
+          .then()
+          .log().all()
+          .statusCode(200)
+          .extract()
+          .as(UpdateResponseModel.class)
+      );
 
-        .spec(baseRequestSpec)
-        .header("Authorization", "Bearer " + token)
-        .body(updateUserData)
-        .when()
-        .patch("/users/me/")
-        .then()
-        .log().all()
-        .statusCode(200)
-        .extract()
-        .as(UpdateResponseModel.class)
-    );
-
-    assertThat(updateResponseModel.username()).isEqualTo(updateUsername);
-    assertThat(updateResponseModel.firstName()).isEqualTo(updateFirstName);
-    assertThat(updateResponseModel.lastName()).isEqualTo(updateLastName);
-    assertThat(updateResponseModel.email()).isEqualTo(updateEmail);
+    step("Проверка данных", () -> {
+      assertThat(updateResponseModel.username()).isEqualTo(updateUsername);
+      assertThat(updateResponseModel.firstName()).isEqualTo(updateFirstName);
+      assertThat(updateResponseModel.lastName()).isEqualTo(updateLastName);
+      assertThat(updateResponseModel.email()).isEqualTo(updateEmail);
+    });
   }
 
   /// PUT
@@ -96,46 +100,49 @@ public class UpdateUserTest extends TestBase {
       updateEmail,
       updateAddr);
 
-    SuccessfulRegistrationResponseModel registrationResponse = step("Регистрация нового пользователя", () ->
-      given()
-        .spec(baseRequestSpec)
-        .body(userData)
-        .when()
-        .post("/users/register/")
-        .then()
-        .statusCode(201)
-        .extract()
-        .as(SuccessfulRegistrationResponseModel.class)
-    );
+    SuccessfulRegistrationResponseModel registrationResponse =
+      step("Регистрация нового пользователя",
+        () -> given()
+          .spec(baseRequestSpec)
+          .body(userData)
+          .when()
+          .post("/users/register/")
+          .then()
+          .statusCode(201)
+          .extract()
+          .as(SuccessfulRegistrationResponseModel.class)
+      );
 
-    LoginResponseModel loginResponse = step("Авторизация", () ->
-      given()
-        .spec(baseRequestSpec)
-        .body(userData)
-        .when()
-        .post("/auth/token/")
-        .then()
-        .statusCode(200)
-        .extract()
-        .as(LoginResponseModel.class)
-    );
+    LoginResponseModel loginResponse =
+      step("Авторизация",
+        () -> given()
+          .spec(baseRequestSpec)
+          .body(userData)
+          .when()
+          .post("/auth/token/")
+          .then()
+          .statusCode(200)
+          .extract()
+          .as(LoginResponseModel.class)
+      );
 
     String token = loginResponse.access();
 
-    UpdateResponseModelPut updateResponseModelPut = step("Обновление данных пользователя - метод PUT", () ->
-      given()
+    UpdateResponseModelPut updateResponseModelPut =
+      step("Обновление данных пользователя - метод PUT",
+        () -> given()
+          .spec(baseRequestSpec)
+          .header("Authorization", "Bearer " + token)
+          .body(updateUserDataPut)
+          .when()
+          .put("/users/me/")
+          .then()
+          .log().all()
+          .statusCode(200)
+          .extract()
+          .as(UpdateResponseModelPut.class)
+      );
 
-        .spec(baseRequestSpec)
-        .header("Authorization", "Bearer " + token)
-        .body(updateUserDataPut)
-        .when()
-        .put("/users/me/")
-        .then()
-        .log().all()
-        .statusCode(200)
-        .extract()
-        .as(UpdateResponseModelPut.class)
-    );
     step("Проверка данных", () -> {
       assertThat(updateResponseModelPut.username()).isEqualTo(updateUsername);
       assertThat(updateResponseModelPut.firstName()).isEqualTo(updateFirstName);

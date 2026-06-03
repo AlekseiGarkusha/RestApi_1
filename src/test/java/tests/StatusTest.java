@@ -44,7 +44,7 @@ public class StatusTest {
       .get("https://selenoid.autotests.cloud/wd/hub/status")
       .then()
       .statusCode(200)
-      .body(matchesJsonSchemaInClasspath("login/statusResponce_login_Schema.json"));
+      .body(matchesJsonSchemaInClasspath("login/statusResponce_auth_Schema.json"));
     System.out.println(RestAssured.baseURI);
   }
 

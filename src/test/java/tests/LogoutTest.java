@@ -15,7 +15,7 @@ public class LogoutTest extends TestBase {
 
   @Test
   public void successfulLogoutTest() {
-    String username = "qaguru";
+    String username = "qaguru888";
     String password = "qaguru123";
 
     LoginBodyModel loginData = new LoginBodyModel(username, password);
@@ -29,7 +29,8 @@ public class LogoutTest extends TestBase {
         .post("/auth/token/")
         .then()
         .statusCode(200)
-        .body(matchesJsonSchemaInClasspath("registration/successfull_registration_response_schema.json"))
+        .body(matchesJsonSchemaInClasspath(
+          "registration/successfull_registration_response_schema.json"))
         .body("access", notNullValue())
         .body("refresh", notNullValue())
         .extract().path("refresh");
