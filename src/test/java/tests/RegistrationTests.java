@@ -8,7 +8,6 @@ import models.registration.create.OnlyUserNameResponseModel;
 import models.registration.create.SuccessfulRegistrationResponseModel;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import setup.TestBase;
 import java.util.List;
 
 import static io.restassured.RestAssured.given;
@@ -16,7 +15,7 @@ import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInC
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static spec.loginSpec.BaseSpecs.baseRequestSpec;
+import static spec.BaseSpecs.baseRequestSpec;
 
 public class RegistrationTests extends TestBase {
 

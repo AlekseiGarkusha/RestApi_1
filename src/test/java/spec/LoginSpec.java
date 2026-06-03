@@ -1,4 +1,4 @@
-package spec.loginSpec;
+package spec;
 
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;
@@ -23,5 +23,13 @@ public class LoginSpec {
     .expectStatusCode(401)
     .expectBody(matchesJsonSchemaInClasspath("login/wrong_login_responce_schema.json"))
     .expectBody("detail", CoreMatchers.notNullValue())
+    .build();
+
+  public static ResponseSpecification successfulLoginResponseSpec = new ResponseSpecBuilder()
+    .log(ALL)
+    .expectStatusCode(200)
+    .expectBody(matchesJsonSchemaInClasspath("registration/successfull_registration_response_schema.json"))
+    .expectBody("access", notNullValue())
+    .expectBody("refresh", notNullValue())
     .build();
 }

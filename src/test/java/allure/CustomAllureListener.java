@@ -3,14 +3,14 @@ package allure;
 import io.qameta.allure.restassured.AllureRestAssured;
 
 
-public class  CustomAllureListener {
+public class CustomAllureListener {
 
-    private static final AllureRestAssured FILTER = new AllureRestAssured();
+  private static final AllureRestAssured FILTER = new AllureRestAssured();
 
-    public static AllureRestAssured withCustomTemplate() {
-      FILTER.setRequestTemplate("request.ftl");
-      FILTER.setRequestTemplate("response.ftl");
+  public static AllureRestAssured withCustomTemplate() {
+    FILTER.setRequestTemplate("request.ftl");
+    FILTER.setRequestTemplate("response.ftl");
 
-      return FILTER;
-    }
+    return FILTER;
+  }
 }

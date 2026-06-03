@@ -3,15 +3,13 @@ package tests;
 import models.login.LoginBodyModel;
 
 import org.junit.jupiter.api.Test;
-import setup.TestBase;
-
 import java.util.HashMap;
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.hamcrest.Matchers.notNullValue;
-import static spec.loginSpec.LoginSpec.loginRequestSpec;
+import static spec.LoginSpec.loginRequestSpec;
 
 public class LogoutTest extends TestBase {
 

@@ -1,7 +1,6 @@
 package tests;
 
 import org.junit.jupiter.api.Test;
-import setup.TestBase;
 
 import static io.restassured.RestAssured.given;
 

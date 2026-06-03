@@ -8,12 +8,11 @@ import models.registration.create.SuccessfulRegistrationResponseModel;
 import models.registration.update.put.UpdateResponseModelPut;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import setup.TestBase;
 
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static spec.loginSpec.BaseSpecs.baseRequestSpec;
+import static spec.BaseSpecs.baseRequestSpec;
 
 public class UpdateUserTest extends TestBase {
   final String

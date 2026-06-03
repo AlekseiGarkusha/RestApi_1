@@ -42,5 +42,4 @@ public class RegistrationTestLombokModel {
       .body("id", notNullValue());
   }
 
-
 }

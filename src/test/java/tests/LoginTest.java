@@ -7,13 +7,13 @@ import models.login.LoginResponseModel;
 import models.login.WrongCredantionalsLoginResponseModel;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import setup.TestBase;
 
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
-import static spec.loginSpec.LoginSpec.*;
-import static spec.loginSpec.RegistrationSpec.classicRegistrationSpec;
+import static spec.LoginSpec.loginRequestSpec;
+import static spec.LoginSpec.wrongRegistrationLoginSpec;
+import static spec.RegistrationSpec.classicRegistrationSpec;
 
 public class LoginTest extends TestBase {
 
@@ -25,7 +25,7 @@ public class LoginTest extends TestBase {
   @Test
   @DisplayName("Классический регистрационный тест")
   void successfulRegistrationTest() {
-    LoginBodyModel registrationData = new LoginBodyModel(newUsername, password);
+    LoginBodyModel registrationData = new LoginBodyModel(username, password);
 
     LoginResponseModel loginResponse = step("Шаги", () ->
       given()
@@ -42,13 +42,13 @@ public class LoginTest extends TestBase {
 
     System.out.println(RestAssured.baseURI);
     step("Проверки", () -> {
-//      String expectedTokenPath = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9";
-//      String actualAccess = loginResponse.access();
-//      String actualRefresh = loginResponse.refresh();
+      String expectedTokenPath = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9";
+      String actualAccess = loginResponse.access();
+      String actualRefresh = loginResponse.refresh();
 
-//      assertThat(actualAccess).startsWith(expectedTokenPath);
-//      assertThat(actualRefresh).startsWith(expectedTokenPath);
-//      assertThat(actualRefresh).isNotEqualTo(actualAccess);
+      assertThat(actualAccess).startsWith(expectedTokenPath);
+      assertThat(actualRefresh).startsWith(expectedTokenPath);
+      assertThat(actualRefresh).isNotEqualTo(actualAccess);
     });
   }
 

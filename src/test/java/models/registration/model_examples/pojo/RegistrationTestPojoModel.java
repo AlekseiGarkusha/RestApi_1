@@ -129,6 +129,4 @@ public class RegistrationTestPojoModel {
 
     assertEquals(username, registrationResponseBodyPojoModel. getUsername());
   }
-
-
 }
