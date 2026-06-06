@@ -24,4 +24,5 @@ public class RegistrationSpec {
       .expectBody("access", Matchers.notNullValue())
       .expectBody("refresh", Matchers.notNullValue())
       .build();
+
 }

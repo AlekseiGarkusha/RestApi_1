@@ -35,7 +35,6 @@ public class LogoutTest extends TestBase {
         .body("refresh", notNullValue())
         .extract().path("refresh");
 
-
     /// LOGOUT BODY
     Map<String, String> logoutBody = new HashMap<>();
     logoutBody.put("refresh", refreshToken);

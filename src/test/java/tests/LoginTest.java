@@ -7,9 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static io.qameta.allure.Allure.step;
-import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
-import static spec.LoginSpec.*;
 
 public class LoginTest extends TestBase {
 
@@ -20,23 +18,11 @@ public class LoginTest extends TestBase {
   @Test
   @DisplayName("Классический авторизационный тест")
   void successfulRegistrationTest() {
-    LoginBodyModel registrationData =
-      step("Предусловия", () ->
-        new LoginBodyModel(username, password));
+    LoginBodyModel registrationData = step("Предусловия", () ->
+      new LoginBodyModel(username, password));
 
-    LoginResponseModel loginResponse =
-      step("Шаги",
-        () -> given()
-          .spec(loginRequestSpec)
-          .body(registrationData)
-          .when()
-          .post("/auth/token/")
-          .then()
-          .log().all()
-          .spec(successfulLoginResponseSpec)
-          .extract()
-          .as(LoginResponseModel.class)
-        );
+    LoginResponseModel loginResponse = step("Шаги", () ->
+      api.login(registrationData));
 
     step("Проверки", () -> {
       String expectedTokenPath = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9";
@@ -52,19 +38,11 @@ public class LoginTest extends TestBase {
   @Test
   @DisplayName("Тест с невалидным логином")
   void wrongRegistrationTest_Password() {
-    LoginBodyModel loginData =
-      step("Предусловия",
-        () -> new LoginBodyModel(username, wrongPassword));
+    LoginBodyModel loginData = step("Предусловия", () ->
+      new LoginBodyModel(username, wrongPassword));
 
     WrongCredantionalsLoginResponseModel loginResponse = step("Шаги", () ->
-      given(loginRequestSpec)
-        .body(loginData)
-        .when()
-        .post("/auth/token/")
-        .then()
-        .spec(wrongRegistrationLoginSpec)
-        .extract().as(WrongCredantionalsLoginResponseModel.class)
-    );
+      api.loginWithWrongCredentials(loginData));
 
     step("Проверки", () -> {
       String expectedDetailError = "Invalid username or password.";
