@@ -80,8 +80,6 @@ public class AuthClient {
       .extract().as(OnlyPasswordResponseModel.class);
   }
 
-  ;
-
   @Step("Регистрация с пустым логином")
   public OnlyUserNameResponseModel testBlankLogin(LoginBodyModel body) {
     return given()
@@ -97,8 +95,6 @@ public class AuthClient {
       .extract().as(OnlyUserNameResponseModel.class);
   }
 
-  ;
-
   @Step("Регистрация с невалидным логином")
   public OnlyUserNameResponseModel testBlankOrWrongLogin(LoginBodyModel body) {
     return given()
@@ -113,9 +109,6 @@ public class AuthClient {
         "registration/negative_registration_response_test_blank_login.json"))
       .extract().as(OnlyUserNameResponseModel.class);
   }
-
-  ;
-
 
   @Step("Обновление данных PATCH")
   public UpdateResponseModel updateUser_PATCH(String body, String token) {

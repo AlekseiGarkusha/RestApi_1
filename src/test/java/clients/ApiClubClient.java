@@ -51,7 +51,7 @@ public class ApiClubClient {
         .pathParam("id", id)
         .body(body)
         .when()
-        .patch("/clubs/{id}")
+        .patch("/clubs/{id}/")
         .then()
         .statusCode(200)
         .extract()
@@ -66,7 +66,7 @@ public class ApiClubClient {
       .pathParam("id", id)
       .body(body)
       .when()
-      .patch("/clubs/{id}")
+      .put("/clubs/{id}/")
       .then()
       .statusCode(200)
       .extract()
@@ -80,13 +80,20 @@ public class ApiClubClient {
       .header("Authorization", "Bearer " + token)
       .pathParam("id", id)
       .when()
-      .delete("/clubs/{id}")
+      .delete("/clubs/{id}/")
       .then()
       .statusCode(204);
   }
 
-
-
+  @Step("Чтение несуществующего id, после удаления")
+  public void getDeteletedIdClub(String token, String id) {
+    given()
+      .spec(loginRequestSpec)
+      .header("Authorization", "Bearer " + token)
+      .pathParam("id", id)
+      .when()
+      .get("/clubs/{id}/")
+      .then()
+      .statusCode(404);
+  }
 }
-
-

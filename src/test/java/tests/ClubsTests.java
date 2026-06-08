@@ -23,11 +23,17 @@ public class ClubsTests extends TestBase {
   private String description = "NEWdescription";
   private String telegramChatLink = "https://t.me/ams_simferopol/486865";
 
-  private String newBookTitle = "updateNEWbookTitle" + GenerateRandomSeries.generateRandomSeries();
-  private String newBookAuthors = "updateNEWbookAuthors";
-  private Integer newPublicationYear = 1999;
-  private String newDescription = "updateNEWdescription";
-  private String newTelegramChatLink = "https://t.me/ams_simferopolupdate/486865";
+  private String newBookTitle_PATCH = "updatePatchBookTitle" + GenerateRandomSeries.generateRandomSeries();
+  private String newBookAuthors_PATCH = "updatePatchBookAuthors";
+  private Integer newPublicationYear_PATCH = 2000;
+  private String newDescription_PATCH = "updatePatchdescription";
+  private String newTelegramChatLink_PATCH = "https://t.me/ams_simferopolupdatePatch/486865";
+
+  private String newBookTitle_PUT = "updatePutBookTitle" + GenerateRandomSeries.generateRandomSeries();
+  private String newBookAuthors_PUT = "updatePutBookAuthors";
+  private Integer newPublicationYear_PUT = 1999;
+  private String newDescription_PUT = "updatePutdescription";
+  private String newTelegramChatLink_PUT = "https://t.me/ams_simferopolupdatePut/486865";
 
   ClubBodyModel clubBodyModel = new ClubBodyModel(
     bookTitle,
@@ -36,7 +42,6 @@ public class ClubsTests extends TestBase {
     description,
     telegramChatLink);
 
-  ///  todo CreateClubs  ..
   @Test
   @DisplayName("Cоздание клуба")
   public void createClub() {
@@ -51,6 +56,7 @@ public class ClubsTests extends TestBase {
     ClubResponseModel clubResponseModel = step("Создание", () ->
       apiClub.create(clubBodyModel, token));
 
+    System.out.println("Вот ID" + clubResponseModel.id());
     step("Проверки", () -> {
       assertThat(clubResponseModel.bookTitle()).isEqualTo(clubBodyModel.bookTitle());
       assertThat(clubResponseModel.bookAuthors()).isEqualTo(clubBodyModel.bookAuthors());
@@ -60,11 +66,10 @@ public class ClubsTests extends TestBase {
     });
   }
 
-  ///  todo ReadClubs..
   @Test
   @DisplayName("Получение клуба по id")
   public void readClub() {
-    String id = "2";
+    String id = "72";
 
     LoginBodyModel registrationData = Allure.step("Предусловия", () ->
       new LoginBodyModel(username, password));
@@ -78,33 +83,23 @@ public class ClubsTests extends TestBase {
       apiClub.read(clubBodyModel, token, id));
 
     step("Проверки", () -> {
-      assertThat(clubResponseModel.id()).isEqualTo("2");
+      assertThat(clubResponseModel.id()).isEqualTo("72");
       assertThat(clubResponseModel.bookAuthors()).isNotEmpty();
       assertThat(clubResponseModel.publicationYear()).isNotNull();
       assertThat(clubResponseModel.description()).isNotEmpty();
       assertThat(clubResponseModel.telegramChatLink()).isNotEmpty();
     });
-
-    System.out.println(clubResponseModel.id());
-    System.out.println(clubResponseModel.bookAuthors());
-    System.out.println(clubResponseModel.publicationYear());
-    System.out.println(clubResponseModel.description());
-    System.out.println(clubResponseModel.telegramChatLink());
   }
 
-  ///  todo UpdateClubs..
-  ///  // БАГА,,!!! 500
   @Test
   @DisplayName("Обновление клуба - Patch")
   public void updateClub_Patch() {
-    String id = "1";
-
     ClubBodyModel updateBodyModel = new ClubBodyModel(
-      newBookTitle,
-      newBookAuthors,
-      newPublicationYear,
-      newDescription,
-      newTelegramChatLink
+      newBookTitle_PATCH,
+      newBookAuthors_PATCH,
+      newPublicationYear_PATCH,
+      newDescription_PATCH,
+      newTelegramChatLink_PATCH
     );
 
     LoginBodyModel registrationData = Allure.step("Предусловия", () ->
@@ -114,6 +109,11 @@ public class ClubsTests extends TestBase {
       api.login(registrationData));
 
     String token = loginResponse.access();
+
+    ClubResponseModel createClub = step("Создание", () ->
+      apiClub.create(clubBodyModel, token));
+
+    String id = createClub.id();
 
     ClubResponseModel clubResponseModel = step("Обновление", () ->
       apiClub.update_Patch(updateBodyModel, token, id));
@@ -124,26 +124,18 @@ public class ClubsTests extends TestBase {
       assertThat(clubResponseModel.publicationYear()).isEqualTo(updateBodyModel.publicationYear());
       assertThat(clubResponseModel.description()).isEqualTo(updateBodyModel.description());
       assertThat(clubResponseModel.telegramChatLink()).isEqualTo(updateBodyModel.telegramChatLink());
-
-      System.out.println(updateBodyModel.bookTitle());
-      System.out.println(updateBodyModel.bookAuthors());
-      System.out.println(updateBodyModel.description());
-      System.out.println(updateBodyModel.telegramChatLink());
     });
   }
 
-  /// БАГА,,!!! 500
   @Test
   @DisplayName("Обновление клуба - Put")
   public void updateClub_Put() {
-    String id = "1";
-
     ClubBodyModel updateBodyModel = new ClubBodyModel(
-      newBookTitle,
-      newBookAuthors,
-      newPublicationYear,
-      newDescription,
-      newTelegramChatLink
+      newBookTitle_PUT,
+      newBookAuthors_PUT,
+      newPublicationYear_PUT,
+      newDescription_PUT,
+      newTelegramChatLink_PUT
     );
 
     LoginBodyModel registrationData = Allure.step("Предусловия", () ->
@@ -154,6 +146,11 @@ public class ClubsTests extends TestBase {
 
     String token = loginResponse.access();
 
+    ClubResponseModel createClub = step("Создание", () ->
+      apiClub.create(clubBodyModel, token));
+
+    String id = createClub.id();
+
     ClubResponseModel clubResponseModel = step("Обновление", () ->
       apiClub.update_Put(updateBodyModel, token, id));
 
@@ -163,21 +160,13 @@ public class ClubsTests extends TestBase {
       assertThat(clubResponseModel.publicationYear()).isEqualTo(updateBodyModel.publicationYear());
       assertThat(clubResponseModel.description()).isEqualTo(updateBodyModel.description());
       assertThat(clubResponseModel.telegramChatLink()).isEqualTo(updateBodyModel.telegramChatLink());
-
-      System.out.println(updateBodyModel.bookTitle());
-      System.out.println(updateBodyModel.bookAuthors());
-      System.out.println(updateBodyModel.description());
-      System.out.println(updateBodyModel.telegramChatLink());
     });
   }
 
-  ///  todo DeleteClubs..
-  /// /// БАГА,,!!! 500
   @Test
-  @DisplayName("")
+  @DisplayName("Удаление клуба")
   public void deleteClub() {
-    ClubResponseModel ValidatableResponse;
-    String id = "2";
+    ClubResponseModel clubResponseModel;
 
     LoginBodyModel registrationData = Allure.step("Предусловия", () ->
       new LoginBodyModel(username, password));
@@ -187,14 +176,15 @@ public class ClubsTests extends TestBase {
 
     String token = loginResponse.access();
 
-    ValidatableResponse = step("Чтение", () ->
-      apiClub.read(clubBodyModel, token, id));
+    clubResponseModel = step("Создание", () ->
+      apiClub.create(clubBodyModel, token));
+
+    String id = clubResponseModel.id();
 
     step("Удаление", () ->
       apiClub.deleteClub(token, id));
 
-    step("Проверка", () -> {
-      assertThat(ValidatableResponse.id()).isNull();
-    });
+    step("Проверка что id больше не существует", () ->
+      apiClub.getDeteletedIdClub(token, id));
   }
 }
