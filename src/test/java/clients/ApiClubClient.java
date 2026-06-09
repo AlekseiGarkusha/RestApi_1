@@ -4,11 +4,8 @@ import io.qameta.allure.Step;
 
 import models.club.ClubBodyModel;
 import models.club.ClubResponseModel;
-import models.login.UpdateResponseModel;
-import models.registration.update.put.UpdateResponseModelPut;
 
 import static io.restassured.RestAssured.given;
-import static spec.BaseSpecs.baseRequestSpec;
 import static spec.ClubSpec.successfulClubCreateResponseSpec;
 import static spec.LoginSpec.loginRequestSpec;
 

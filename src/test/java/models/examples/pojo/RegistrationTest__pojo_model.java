@@ -1,7 +1,8 @@
-package models.pojo;
+package models.examples.pojo;
 
 import com.github.javafaker.Faker;
 import io.restassured.http.ContentType;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.get;
@@ -41,6 +42,7 @@ public class RegistrationTest__pojo_model {
       .statusCode(200)
       .body("total", is(5));
   }
+
 
   @Test
   void fieldsTest() {

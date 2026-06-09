@@ -15,7 +15,7 @@ public class LogoutTest extends TestBase {
 
   @Test
   public void successfulLogoutTest() {
-    String username = "qaguru888";
+    String username = "qaguru777";
     String password = "qaguru123";
 
     LoginBodyModel loginData = new LoginBodyModel(username, password);

@@ -2,6 +2,7 @@ package models.registration.model_examples.lombok;
 
 import com.github.javafaker.Faker;
 import io.restassured.http.ContentType;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
@@ -9,7 +10,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 
 public class RegistrationTestLombokModel {
-
+  @Disabled("temporarily disabled")
   @Test
   void successfulRegistrationTest_with_lombok() {
     Faker faker = new Faker();

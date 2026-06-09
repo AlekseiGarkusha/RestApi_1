@@ -11,18 +11,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class LoginTest extends TestBase {
 
-  String username = "qaguru888";
+  String username = "qaguru777";
   String password = "qaguru123";
   String wrongPassword = "qaguru888";
 
   @Test
   @DisplayName("Классический авторизационный тест")
   void successfulRegistrationTest() {
-    LoginBodyModel registrationData = step("Предусловия", () ->
-      new LoginBodyModel(username, password));
+    LoginBodyModel registrationData = new LoginBodyModel(username, password);
 
-    LoginResponseModel loginResponse = step("Шаги", () ->
-      api.login(registrationData));
+    LoginResponseModel loginResponse = api.login(registrationData);
 
     step("Проверки", () -> {
       String expectedTokenPath = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9";
@@ -38,11 +36,9 @@ public class LoginTest extends TestBase {
   @Test
   @DisplayName("Тест с невалидным логином")
   void wrongRegistrationTest_Password() {
-    LoginBodyModel loginData = step("Предусловия", () ->
-      new LoginBodyModel(username, wrongPassword));
+    LoginBodyModel loginData = new LoginBodyModel(username, wrongPassword);
 
-    WrongCredantionalsLoginResponseModel loginResponse = step("Шаги", () ->
-      api.loginWithWrongCredentials(loginData));
+    WrongCredantionalsLoginResponseModel loginResponse = api.loginWithWrongCredentials(loginData);
 
     step("Проверки", () -> {
       String expectedDetailError = "Invalid username or password.";

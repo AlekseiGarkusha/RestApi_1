@@ -11,7 +11,6 @@ import static org.hamcrest.Matchers.hasKey;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RegistrationTest__pojo_model {
-
   @Test
   void totalAmountTest_withResponseLogs() {
     get("https://selenoid.autotests.cloud/status")
@@ -129,6 +128,4 @@ public class RegistrationTest__pojo_model {
 
     assertEquals(username, registrationResponseBodyPojoModel. getUsername());
   }
-
-
 }

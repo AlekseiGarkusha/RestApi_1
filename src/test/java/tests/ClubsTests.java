@@ -1,7 +1,6 @@
 package tests;
 
 import helpers.GenerateRandomSeries;
-import io.qameta.allure.Allure;
 import models.club.ClubBodyModel;
 import models.club.ClubResponseModel;
 import models.login.LoginBodyModel;
@@ -45,18 +44,13 @@ public class ClubsTests extends TestBase {
   @Test
   @DisplayName("Cоздание клуба")
   public void createClub() {
-    LoginBodyModel registrationData = Allure.step("Предусловия", () ->
-      new LoginBodyModel(username, password));
+    LoginBodyModel registrationData = new LoginBodyModel(username, password);
 
-    LoginResponseModel loginResponse = Allure.step("Авторизация", () ->
-      api.login(registrationData));
-
+    LoginResponseModel loginResponse = api.login(registrationData);
     String token = loginResponse.access();
 
-    ClubResponseModel clubResponseModel = step("Создание", () ->
-      apiClub.create(clubBodyModel, token));
+    ClubResponseModel clubResponseModel = apiClub.create(clubBodyModel, token);
 
-    System.out.println("Вот ID" + clubResponseModel.id());
     step("Проверки", () -> {
       assertThat(clubResponseModel.bookTitle()).isEqualTo(clubBodyModel.bookTitle());
       assertThat(clubResponseModel.bookAuthors()).isEqualTo(clubBodyModel.bookAuthors());
@@ -71,16 +65,12 @@ public class ClubsTests extends TestBase {
   public void readClub() {
     String id = "72";
 
-    LoginBodyModel registrationData = Allure.step("Предусловия", () ->
-      new LoginBodyModel(username, password));
+    LoginBodyModel registrationData = new LoginBodyModel(username, password);
 
-    LoginResponseModel loginResponse = Allure.step("Авторизация", () ->
-      api.login(registrationData));
-
+    LoginResponseModel loginResponse = api.login(registrationData);
     String token = loginResponse.access();
 
-    ClubResponseModel clubResponseModel = step("Чтение", () ->
-      apiClub.read(clubBodyModel, token, id));
+    ClubResponseModel clubResponseModel = apiClub.read(clubBodyModel, token, id);
 
     step("Проверки", () -> {
       assertThat(clubResponseModel.id()).isEqualTo("72");
@@ -102,21 +92,17 @@ public class ClubsTests extends TestBase {
       newTelegramChatLink_PATCH
     );
 
-    LoginBodyModel registrationData = Allure.step("Предусловия", () ->
-      new LoginBodyModel(username, password));
+    LoginBodyModel registrationData = new LoginBodyModel(username, password);
 
-    LoginResponseModel loginResponse = Allure.step("Авторизация", () ->
-      api.login(registrationData));
-
+    LoginResponseModel loginResponse = api.login(registrationData);
     String token = loginResponse.access();
 
-    ClubResponseModel createClub = step("Создание", () ->
-      apiClub.create(clubBodyModel, token));
-
+    ClubResponseModel createClub = apiClub.create(clubBodyModel, token);
     String id = createClub.id();
 
-    ClubResponseModel clubResponseModel = step("Обновление", () ->
-      apiClub.update_Patch(updateBodyModel, token, id));
+    ClubResponseModel clubResponseModel = apiClub.update_Patch(updateBodyModel, token, id);
+
+    System.out.println(apiClub.update_Patch(updateBodyModel, token, id));
 
     step("Проверки", () -> {
       assertThat(clubResponseModel.bookTitle()).isEqualTo(updateBodyModel.bookTitle());
@@ -138,21 +124,15 @@ public class ClubsTests extends TestBase {
       newTelegramChatLink_PUT
     );
 
-    LoginBodyModel registrationData = Allure.step("Предусловия", () ->
-      new LoginBodyModel(username, password));
+    LoginBodyModel registrationData = new LoginBodyModel(username, password);
 
-    LoginResponseModel loginResponse = Allure.step("Авторизация", () ->
-      api.login(registrationData));
-
+    LoginResponseModel loginResponse = api.login(registrationData);
     String token = loginResponse.access();
 
-    ClubResponseModel createClub = step("Создание", () ->
-      apiClub.create(clubBodyModel, token));
-
+    ClubResponseModel createClub = apiClub.create(clubBodyModel, token);
     String id = createClub.id();
 
-    ClubResponseModel clubResponseModel = step("Обновление", () ->
-      apiClub.update_Put(updateBodyModel, token, id));
+    ClubResponseModel clubResponseModel = apiClub.update_Put(updateBodyModel, token, id);
 
     step("Проверки", () -> {
       assertThat(clubResponseModel.bookTitle()).isEqualTo(updateBodyModel.bookTitle());
@@ -168,21 +148,15 @@ public class ClubsTests extends TestBase {
   public void deleteClub() {
     ClubResponseModel clubResponseModel;
 
-    LoginBodyModel registrationData = Allure.step("Предусловия", () ->
-      new LoginBodyModel(username, password));
+    LoginBodyModel registrationData = new LoginBodyModel(username, password);
 
-    LoginResponseModel loginResponse = Allure.step("Авторизация", () ->
-      api.login(registrationData));
-
+    LoginResponseModel loginResponse = api.login(registrationData);
     String token = loginResponse.access();
 
-    clubResponseModel = step("Создание", () ->
-      apiClub.create(clubBodyModel, token));
-
+    clubResponseModel = apiClub.create(clubBodyModel, token);
     String id = clubResponseModel.id();
 
-    step("Удаление", () ->
-      apiClub.deleteClub(token, id));
+    apiClub.deleteClub(token, id);
 
     step("Проверка что id больше не существует", () ->
       apiClub.getDeteletedIdClub(token, id));

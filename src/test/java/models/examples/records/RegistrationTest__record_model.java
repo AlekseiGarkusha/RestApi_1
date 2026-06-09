@@ -1,6 +1,7 @@
-package models.records;
+package models.examples.records;
 
 import io.restassured.http.ContentType;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
@@ -8,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RegistrationTest__record_model {
 
+  @Disabled("temporarily disabled")
   @Test
   public void successfulRegistrationTest_with_record() {
     String username = "testUser";

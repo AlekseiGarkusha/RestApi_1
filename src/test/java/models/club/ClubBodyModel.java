@@ -1,6 +1,9 @@
 package models.club;
 
-  public record ClubBodyModel(
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public record ClubBodyModel(
   String bookTitle,
   String bookAuthors,
   Integer publicationYear,
