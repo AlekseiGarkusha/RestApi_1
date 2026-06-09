@@ -2,18 +2,20 @@ package clients;
 
 import io.qameta.allure.Step;
 
-import models.club.CreateClubBodyModel;
-import models.club.CreateClubResponseModel;
-import models.login.LoginResponseModel;
+import models.club.ClubBodyModel;
+import models.club.ClubResponseModel;
+import models.login.UpdateResponseModel;
+import models.registration.update.put.UpdateResponseModelPut;
 
 import static io.restassured.RestAssured.given;
+import static spec.BaseSpecs.baseRequestSpec;
 import static spec.ClubSpec.successfulClubCreateResponseSpec;
 import static spec.LoginSpec.loginRequestSpec;
 
-public class ClubClient {
+public class ApiClubClient {
 
   @Step("Создание Club")
-  public CreateClubResponseModel create(CreateClubBodyModel body, String token) {
+  public ClubResponseModel create(ClubBodyModel body, String token) {
     return given()
       .spec(loginRequestSpec)
       .header("Authorization", "Bearer " + token)
@@ -23,8 +25,66 @@ public class ClubClient {
       .then()
       .spec(successfulClubCreateResponseSpec)
       .extract()
-      .as(CreateClubResponseModel.class);
+      .as(ClubResponseModel.class);
   }
+
+  @Step("Получение по id")
+  public ClubResponseModel read(ClubBodyModel body, String token, String id) {
+    return given()
+      .spec(loginRequestSpec)
+      .header("Authorization", "Bearer " + token)
+      .pathParam("id", id)
+      .body(body)
+      .when()
+      .get("/clubs/{id}")
+      .then()
+      .statusCode(200)
+      .extract()
+      .as(ClubResponseModel.class);
+  }
+
+  @Step("Обновление клуба")
+    public ClubResponseModel update_Patch(ClubBodyModel body, String token, String id) {
+      return given()
+        .spec(loginRequestSpec)
+        .header("Authorization", "Bearer " + token)
+        .pathParam("id", id)
+        .body(body)
+        .when()
+        .patch("/clubs/{id}")
+        .then()
+        .statusCode(200)
+        .extract()
+        .as(ClubResponseModel.class);
+  }
+
+  @Step("Обновление клуба")
+  public ClubResponseModel update_Put(ClubBodyModel body, String token, String id) {
+    return given()
+      .spec(loginRequestSpec)
+      .header("Authorization", "Bearer " + token)
+      .pathParam("id", id)
+      .body(body)
+      .when()
+      .patch("/clubs/{id}")
+      .then()
+      .statusCode(200)
+      .extract()
+      .as(ClubResponseModel.class);
+  }
+
+  @Step("Удаление клуба")
+  public void deleteClub(String token, String id) {
+    given()
+      .spec(loginRequestSpec)
+      .header("Authorization", "Bearer " + token)
+      .when()
+      .delete("/clubs/{id}", id)
+      .then()
+      .statusCode(204);
+  }
+
+
 
 }
 

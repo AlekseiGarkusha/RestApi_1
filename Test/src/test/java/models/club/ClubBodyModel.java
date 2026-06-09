@@ -1,8 +1,9 @@
 package models.club;
 
-public record CreateClubBodyModel(
+  public record ClubBodyModel(
   String bookTitle,
   String bookAuthors,
-  String publicationYear,
+  Integer publicationYear,
   String description,
-  String telegramChatLink) {}
+  String telegramChatLink
+    ) {}

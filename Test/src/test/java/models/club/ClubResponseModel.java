@@ -2,11 +2,11 @@ package models.club;
 
 import java.util.List;
 
-public record CreateClubResponseModel(
+public record ClubResponseModel(
   String id,
   String bookTitle,
   String bookAuthors,
-  String publicationYear,
+  Integer publicationYear,
   String description,
   String telegramChatLink,
   String owner,

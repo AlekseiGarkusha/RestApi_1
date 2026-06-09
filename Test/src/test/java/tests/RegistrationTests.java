@@ -1,7 +1,6 @@
 package tests;
 
 import helpers.GenerateRandomSeries;
-import io.restassured.http.ContentType;
 import models.login.LoginBodyModel;
 import models.registration.create.OnlyPasswordResponseModel;
 import models.registration.create.OnlyUserNameResponseModel;
@@ -43,12 +42,12 @@ public class RegistrationTests extends TestBase {
   @DisplayName("Проверка на дубликат юзера по существующему 'username'")
   void successfulRegistrationTest_ExistingUser() {
     LoginBodyModel loginData = step("Предусловия", () ->
-          new LoginBodyModel(existingUsername, password));
+      new LoginBodyModel(existingUsername, password));
 
     List<String> expectedMessage = List.of("A user with that username already exists.");
 
     OnlyUserNameResponseModel registrationResponse = step("шаги", () ->
-     api.testBlankLogin(loginData));
+      api.testBlankLogin(loginData));
 
     step("проверки", () -> {
       assertEquals(expectedMessage, registrationResponse.username());});
@@ -62,8 +61,8 @@ public class RegistrationTests extends TestBase {
 
     List<String> expectedMessage = List.of("This field may not be blank.");
 
-    OnlyUserNameResponseModel registrationResponse = step("шаги",
-      () -> api.testBlankLogin(loginData));
+    OnlyUserNameResponseModel registrationResponse = step("шаги", () ->
+      api.testBlankLogin(loginData));
 
     step("проверки", () -> {
       assertEquals(expectedMessage, registrationResponse.username());});
@@ -80,7 +79,8 @@ public class RegistrationTests extends TestBase {
 
     step("Проверки", () -> {
       List<String> expectedMessage = List.of("This field may not be blank.");
-      assertEquals(expectedMessage, registrationResponse.password());});
+      assertEquals(expectedMessage, registrationResponse.password());
+    });
   }
 
   @Test
@@ -95,6 +95,7 @@ public class RegistrationTests extends TestBase {
     step("проверки", () -> {
       List<String> expectedMessage = List.of(
         "Enter a valid username. This value may contain only letters, numbers, and @/./+/-/_ characters.");
-      assertEquals(expectedMessage, registrationResponse.username());});
+      assertEquals(expectedMessage, registrationResponse.username());
+    });
   }
 }
