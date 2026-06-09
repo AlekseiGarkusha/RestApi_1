@@ -3,14 +3,10 @@ package clients;
 import io.qameta.allure.Step;
 
 import io.restassured.http.ContentType;
-import models.login.LoginBodyModel;
-import models.login.LoginResponseModel;
-import models.login.UpdateResponseModel;
-import models.login.WrongCredantionalsLoginResponseModel;
+import models.login.*;
 import models.registration.create.OnlyPasswordResponseModel;
 import models.registration.create.OnlyUserNameResponseModel;
 import models.registration.create.SuccessfulRegistrationResponseModel;
-import models.registration.update.put.UpdateResponseModelPut;
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
@@ -111,7 +107,7 @@ public class AuthClient {
   }
 
   @Step("Обновление данных PATCH")
-  public UpdateResponseModel updateUser_PATCH(String body, String token) {
+  public UpdateResponseModel_Patch updateUser_PATCH(UpdateResponseModel_Patch body, String token) {
     return given()
       .spec(baseRequestSpec)
       .header("Authorization", "Bearer " + token)
@@ -122,11 +118,11 @@ public class AuthClient {
       .log().all()
       .statusCode(200)
       .extract()
-      .as(UpdateResponseModel.class);
+      .as(UpdateResponseModel_Patch.class);
   }
 
   @Step("Обновление данных PATCH")
-  public UpdateResponseModelPut updateUser_PUT(String body, String token) {
+  public UpdateResponseModel_Put updateUser_PUT(UpdateResponseModel_Put body, String token) {
     return given()
       .spec(baseRequestSpec)
       .header("Authorization", "Bearer " + token)
@@ -137,6 +133,6 @@ public class AuthClient {
       .log().all()
       .statusCode(200)
       .extract()
-      .as(UpdateResponseModelPut.class);
+      .as(UpdateResponseModel_Put.class);
   }
 }

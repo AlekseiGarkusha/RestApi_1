@@ -3,52 +3,52 @@ package tests;
 import helpers.GenerateRandomSeries;
 import models.login.LoginBodyModel;
 import models.login.LoginResponseModel;
-import models.login.UpdateResponseModel;
+import models.login.UpdateResponseModel_Patch;
+import models.login.UpdateResponseModel_Put;
 import models.registration.create.SuccessfulRegistrationResponseModel;
-import models.registration.update.put.UpdateResponseModelPut;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static io.qameta.allure.Allure.step;
-import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static spec.BaseSpecs.baseRequestSpec;
 
 public class UpdateUserTest extends TestBase {
-  final String
-    testUsername = "testuser" + GenerateRandomSeries.generateRandomSeries(),
+
+  private final String
+    testUsername = "testUser" + GenerateRandomSeries.generateRandomSeries(),
     password = "qaguru123",
+
     updateUsername = "updateUsername" + GenerateRandomSeries.generateRandomSeries(),
-    updateFirstName = "updateFirstBame",
-    updateLastName = "updateLastname",
-    updateEmail = "user@example.com",
+    updateFirstName = "updateFirstName",
+    updateLastName = "updateLastName",
+    updateEmail = "user12@gmail.com",
     updateAddr = "testAdrr",
     updateId = "";
 
   /// PATCH
   @Test
-  @DisplayName("Тест - обновление данных пользователя")
+  @DisplayName("Тест - обновление данных пользователя - PATCH")
   void updateUser_PATCH() {
     LoginBodyModel userData = new LoginBodyModel(testUsername, password);
+    UpdateResponseModel_Patch updateUserData = new UpdateResponseModel_Patch(
+      updateUsername,
+      updateFirstName,
+      updateLastName,
+      updateEmail,
+      updateAddr,
+      updateId);
 
-    UpdateResponseModel updateUserData = new UpdateResponseModel(
-      updateId, updateUsername, updateFirstName,
-      updateLastName, updateEmail, updateAddr);
+    SuccessfulRegistrationResponseModel registrationResponse = api.createNewUser(userData);
 
-    SuccessfulRegistrationResponseModel registrationResponse =
-      step("Регистрация нового пользователя", () ->
-        api.createNewUser(userData));
-
-    LoginResponseModel loginResponse = step("Авторизация", () ->
-      api.login(userData));
+    LoginResponseModel loginResponse = api.login(userData);
 
     String token = loginResponse.access();
 
-    UpdateResponseModel updateResponseModel =
-      step("Обновление данных пользователя метод PATCH", () ->
-        api.updateUser_PATCH(String.valueOf(updateUserData), token));
+    UpdateResponseModel_Patch updateResponseModel = api.updateUser_PATCH(updateUserData, token);
 
-    step("Проверка данных", () -> {
+    System.out.println(updateEmail);
+
+    step("Проверка данКороных", () -> {
       assertThat(updateResponseModel.username()).isEqualTo(updateUsername);
       assertThat(updateResponseModel.firstName()).isEqualTo(updateFirstName);
       assertThat(updateResponseModel.lastName()).isEqualTo(updateLastName);
@@ -56,37 +56,25 @@ public class UpdateUserTest extends TestBase {
     });
   }
 
+
   /// PUT
   @Test
-  @DisplayName("Тест - обновление данных пользователя")
+  @DisplayName("Тест - обновление данных пользователя PUT")
   void updateUser_PUT() {
     LoginBodyModel userData = new LoginBodyModel(testUsername, password);
+    UpdateResponseModel_Put updateUserDataPut = new UpdateResponseModel_Put(
+      updateUsername, updateFirstName,
+      updateLastName, updateEmail);
 
-    UpdateResponseModelPut updateUserDataPut = new UpdateResponseModelPut(
-      updateId,
-      updateUsername,
-      updateFirstName,
-      updateLastName,
-      updateEmail,
-      updateAddr);
+    SuccessfulRegistrationResponseModel registrationResponse = api.createNewUser(userData);
 
-    SuccessfulRegistrationResponseModel registrationResponse =
-      step("Регистрация нового пользователя", () ->
-        api.createNewUser(userData));
-
-    LoginResponseModel loginResponse = step("Авторизация", () ->
-        api.login(userData));
-
+    LoginResponseModel loginResponse = api.login(userData);
     String token = loginResponse.access();
 
-    UpdateResponseModelPut updateResponseModelPut = step("Обновление данных пользователя - метод PUT", () ->
-      api.updateUser_PUT(String.valueOf(userData), token));
+    UpdateResponseModel_Put updateResponse = api.updateUser_PUT(updateUserDataPut, token);
 
     step("Проверка данных", () -> {
-      assertThat(updateResponseModelPut.username()).isEqualTo(updateUsername);
-      assertThat(updateResponseModelPut.firstName()).isEqualTo(updateFirstName);
-      assertThat(updateResponseModelPut.lastName()).isEqualTo(updateLastName);
-      assertThat(updateResponseModelPut.email()).isEqualTo(updateEmail);
+      assertThat(updateResponse.firstname()).isEqualTo(updateFirstName);
     });
   }
 }

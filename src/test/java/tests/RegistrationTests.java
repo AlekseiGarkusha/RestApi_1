@@ -23,11 +23,9 @@ public class RegistrationTests extends TestBase {
   @Test
   @DisplayName("Проверка на создание нового юзера")
   void createNewUserTest() {
-    LoginBodyModel loginData = step("Предусловия", () -> new
-      LoginBodyModel(username, password));
+    LoginBodyModel loginData = new LoginBodyModel(username, password);
 
-    SuccessfulRegistrationResponseModel registrationResponse =
-      step("шаги", () -> api.createNewUser(loginData));
+    SuccessfulRegistrationResponseModel registrationResponse = api.createNewUser(loginData);
 
     step("проверки", () -> {
       String actualUsername = registrationResponse.username();
@@ -46,8 +44,7 @@ public class RegistrationTests extends TestBase {
 
     List<String> expectedMessage = List.of("A user with that username already exists.");
 
-    OnlyUserNameResponseModel registrationResponse = step("шаги", () ->
-      api.testBlankLogin(loginData));
+    OnlyUserNameResponseModel registrationResponse = api.testBlankLogin(loginData);
 
     step("проверки", () -> {
       assertEquals(expectedMessage, registrationResponse.username());});
@@ -56,13 +53,11 @@ public class RegistrationTests extends TestBase {
   @Test
   @DisplayName("Проверка на пустой логин")
   void successfulRegistrationTest_EmptyLogin() {
-    LoginBodyModel loginData = step("Предусловия", () ->
-      new LoginBodyModel("", password));
+    LoginBodyModel loginData = new LoginBodyModel("", password);
 
     List<String> expectedMessage = List.of("This field may not be blank.");
 
-    OnlyUserNameResponseModel registrationResponse = step("шаги", () ->
-      api.testBlankLogin(loginData));
+    OnlyUserNameResponseModel registrationResponse = api.testBlankLogin(loginData);
 
     step("проверки", () -> {
       assertEquals(expectedMessage, registrationResponse.username());});
@@ -71,11 +66,9 @@ public class RegistrationTests extends TestBase {
   @Test
   @DisplayName("Проверка на пустой пароль")
   void successfulRegistrationTest_BlankPassword() {
-    LoginBodyModel loginData = step("Предусловия", () ->
-      new LoginBodyModel(username, ""));
+    LoginBodyModel loginData = new LoginBodyModel(username, "");
 
-    OnlyPasswordResponseModel registrationResponse = step("Шаги",
-      () -> api.testBlankPassword(loginData));
+    OnlyPasswordResponseModel registrationResponse = api.testBlankPassword(loginData);
 
     step("Проверки", () -> {
       List<String> expectedMessage = List.of("This field may not be blank.");
@@ -86,11 +79,9 @@ public class RegistrationTests extends TestBase {
   @Test
   @DisplayName("Проверка на невалидный логин")
   void successfulRegistrationTest_WrongLogin() {
-    LoginBodyModel loginData = step("Предусловия",
-      () -> new LoginBodyModel("!!@#!@#", password));
+    LoginBodyModel loginData = new LoginBodyModel("!!@#!@#", password);
 
-    OnlyUserNameResponseModel registrationResponse = step("шаги",
-      () -> api.testBlankOrWrongLogin(loginData));
+    OnlyUserNameResponseModel registrationResponse = api.testBlankOrWrongLogin(loginData);
 
     step("проверки", () -> {
       List<String> expectedMessage = List.of(
