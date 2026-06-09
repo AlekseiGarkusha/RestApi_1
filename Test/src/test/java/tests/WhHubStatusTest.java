@@ -1,7 +1,6 @@
 package tests;
 
 import org.junit.jupiter.api.Test;
-import setup.TestBase;
 
 import static io.restassured.RestAssured.given;
 
@@ -12,7 +11,7 @@ public class WhHubStatusTest extends TestBase {
     given()
       .auth().basic("user1", "1234")
       .when()
-      .get("/wd/hub/status")
+      .get("https://selenoid.autotests.cloud/wd/hub/status")
       .then()
       .statusCode(200);
   }

@@ -1,5 +1,6 @@
 package tests;
 
+import io.restassured.RestAssured;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
@@ -31,6 +32,7 @@ public class StatusTest {
       .body("$", hasKey("value"))
       .body("value", hasKey("message"))
       .body("value", hasKey("ready"));
+    System.out.println(RestAssured.baseURI);
   }
 
   // Если разработчик изменит код - то тест упадёт
@@ -42,7 +44,8 @@ public class StatusTest {
       .get("https://selenoid.autotests.cloud/wd/hub/status")
       .then()
       .statusCode(200)
-      .body(matchesJsonSchemaInClasspath("statusResponce_login_Schema.json"));
+      .body(matchesJsonSchemaInClasspath("login/statusResponce_auth_Schema.json"));
+    System.out.println(RestAssured.baseURI);
   }
 
   @Test

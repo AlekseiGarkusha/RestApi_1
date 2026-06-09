@@ -60,7 +60,6 @@ public class RegistrationResponseBodyPojoModel {
   }
 
 
-
   @Override
   public  String toString() {
     return format("{\"id\": \"%s\", \"username\": \"%s\", " +

@@ -3,17 +3,16 @@ package tests;
 import helpers.GenerateRandomSeries;
 import io.restassured.http.ContentType;
 import models.login.LoginBodyModel;
-import models.registration.*;
+import models.registration.create.OnlyPasswordResponseModel;
+import models.registration.create.OnlyUserNameResponseModel;
+import models.registration.create.SuccessfulRegistrationResponseModel;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import setup.TestBase;
 
 import java.util.List;
 
-import static io.restassured.RestAssured.given;
-import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
+import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RegistrationTests extends TestBase {
@@ -24,129 +23,78 @@ public class RegistrationTests extends TestBase {
 
   @Test
   @DisplayName("Проверка на создание нового юзера")
-  void successfulRegistrationTest() {
-    LoginBodyModel loginData = new LoginBodyModel(username, password);
+  void createNewUserTest() {
+    LoginBodyModel loginData = step("Предусловия", () -> new
+      LoginBodyModel(username, password));
 
     SuccessfulRegistrationResponseModel registrationResponse =
-      given()
-        .log().all()
-        .contentType(ContentType.JSON)
-        .body(loginData)
-        .basePath("/api/v1")
-        .when()
-        .post("/users/register/")
-        .then()
-        .log().all()
-        .statusCode(201)
-        .body(matchesJsonSchemaInClasspath(
-          "registration/successfull_registration_response_createUser_Schema.json"))
-        .body("id", notNullValue())
-        .body("username", notNullValue())
-        .body("remoteAddr", notNullValue())
-        .extract().as(SuccessfulRegistrationResponseModel.class);
+      step("шаги", () -> api.createNewUser(loginData));
 
-    String actualUsername = registrationResponse.username();
-    assertThat(actualUsername).isEqualTo(username);
-    assertThat(registrationResponse.firstName()).isEqualTo("");
-    assertThat(registrationResponse.lastName()).isEqualTo("");
-    assertThat(registrationResponse.email()).isEqualTo("");
+    step("проверки", () -> {
+      String actualUsername = registrationResponse.username();
+      assertThat(actualUsername).isEqualTo(username);
+      assertThat(registrationResponse.firstName()).isEqualTo("");
+      assertThat(registrationResponse.lastName()).isEqualTo("");
+      assertThat(registrationResponse.email()).isEqualTo("");
+    });
   }
 
   @Test
   @DisplayName("Проверка на дубликат юзера по существующему 'username'")
   void successfulRegistrationTest_ExistingUser() {
-    LoginBodyModel loginData = new LoginBodyModel(existingUsername, password);
+    LoginBodyModel loginData = step("Предусловия", () ->
+          new LoginBodyModel(existingUsername, password));
+
     List<String> expectedMessage = List.of("A user with that username already exists.");
 
-    OnlyUserNameResponseModel registrationResponse =
-      given()
-        .log().all()
-        .contentType(ContentType.JSON)
-        .body(loginData)
-        .basePath("/api/v1")
-        .when()
-        .post("/users/register/")
-        .then()
-        .log().all()
-        .statusCode(400)
-        .body(matchesJsonSchemaInClasspath(
-          "registration/successfull_registration_response_create_existingUser_Schema.json"))
-        .extract()
-        .as(OnlyUserNameResponseModel.class);
+    OnlyUserNameResponseModel registrationResponse = step("шаги", () ->
+     api.testBlankLogin(loginData));
 
-    assertEquals(expectedMessage, registrationResponse.username());
+    step("проверки", () -> {
+      assertEquals(expectedMessage, registrationResponse.username());});
   }
 
   @Test
   @DisplayName("Проверка на пустой логин")
   void successfulRegistrationTest_EmptyLogin() {
-    LoginBodyModel loginData = new LoginBodyModel("", password);
+    LoginBodyModel loginData = step("Предусловия", () ->
+      new LoginBodyModel("", password));
+
     List<String> expectedMessage = List.of("This field may not be blank.");
 
-    OnlyUserNameResponseModel registrationResponse =
-      given()
-        .log().all()
-        .contentType(ContentType.JSON)
-        .body(loginData)
-        .basePath("/api/v1")
-        .when()
-        .post("/users/register/")
-        .then()
-        .log().all()
-        .statusCode(400)
-        .body(matchesJsonSchemaInClasspath(
-          "registration/negative_registration_response_test_blank_login.json"))
-        .extract().as(OnlyUserNameResponseModel.class);
+    OnlyUserNameResponseModel registrationResponse = step("шаги",
+      () -> api.testBlankLogin(loginData));
 
-    assertEquals(expectedMessage, registrationResponse.username());
+    step("проверки", () -> {
+      assertEquals(expectedMessage, registrationResponse.username());});
   }
 
   @Test
   @DisplayName("Проверка на пустой пароль")
   void successfulRegistrationTest_BlankPassword() {
-    LoginBodyModel loginData = new LoginBodyModel(username, "");
-    List<String> expectedMessage = List.of("This field may not be blank.");
+    LoginBodyModel loginData = step("Предусловия", () ->
+      new LoginBodyModel(username, ""));
 
-    OnlyPasswordResponseModel registrationResponse =
-      given()
-        .log().all()
-        .contentType(ContentType.JSON)
-        .body(loginData)
-        .basePath("/api/v1")
-        .when()
-        .post("/users/register/")
-        .then()
-        .log().all()
-        .statusCode(400)
-        .body(matchesJsonSchemaInClasspath(
-          "registration/negative_registration_response_test_blank_password.json"))
-        .extract().as(OnlyPasswordResponseModel.class);
+    OnlyPasswordResponseModel registrationResponse = step("Шаги",
+      () -> api.testBlankPassword(loginData));
 
-    assertEquals(expectedMessage, registrationResponse.password());
+    step("Проверки", () -> {
+      List<String> expectedMessage = List.of("This field may not be blank.");
+      assertEquals(expectedMessage, registrationResponse.password());});
   }
 
   @Test
   @DisplayName("Проверка на невалидный логин")
   void successfulRegistrationTest_WrongLogin() {
-    LoginBodyModel loginData = new LoginBodyModel("!!@#!@#", password);
-    List<String> expectedMessage = List.of(
-      "Enter a valid username. This value may contain only letters, numbers, and @/./+/-/_ characters.");
+    LoginBodyModel loginData = step("Предусловия",
+      () -> new LoginBodyModel("!!@#!@#", password));
 
-    OnlyUserNameResponseModel registrationResponse =
-      given()
-        .log().all()
-        .contentType(ContentType.JSON)
-        .body(loginData)
-        .basePath("/api/v1")
-        .when()
-        .post("/users/register/")
-        .then()
-        .log().all()
-        .statusCode(400)
-        .body(matchesJsonSchemaInClasspath(
-          "registration/negative_registration_response_test_blank_login.json"))
-        .extract().as(OnlyUserNameResponseModel.class);
+    OnlyUserNameResponseModel registrationResponse = step("шаги",
+      () -> api.testBlankOrWrongLogin(loginData));
 
-    assertEquals(expectedMessage, registrationResponse.username());
+    step("проверки", () -> {
+      List<String> expectedMessage = List.of(
+        "Enter a valid username. This value may contain only letters, numbers, and @/./+/-/_ characters.");
+      assertEquals(expectedMessage, registrationResponse.username());});
   }
 }
