@@ -1,11 +1,14 @@
 package tests;
 
 import helpers.GenerateRandomSeries;
-import models.login.LoginBodyModel;
-import models.login.LoginResponseModel;
-import models.login.UpdateResponseModel_Patch;
-import models.login.UpdateResponseModel_Put;
+
+import models.login.*;
 import models.registration.create.SuccessfulRegistrationResponseModel;
+import models.user.UpdateUserBodyModel_Patch;
+import models.user.UpdateUserBodyModel_Put;
+import models.user.UpdateUserResponseModel_Patch;
+import models.user.UpdateUserResponseModel_Put;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -21,22 +24,20 @@ public class UpdateUserTest extends TestBase {
     updateUsername = "updateUsername" + GenerateRandomSeries.generateRandomSeries(),
     updateFirstName = "updateFirstName",
     updateLastName = "updateLastName",
-    updateEmail = "user12@gmail.com",
+    updateEmail = "userG-12@yandex.ru",
     updateAddr = "testAdrr",
     updateId = "";
 
-  /// PATCH
   @Test
   @DisplayName("Тест - обновление данных пользователя - PATCH")
   void updateUser_PATCH() {
     LoginBodyModel userData = new LoginBodyModel(testUsername, password);
-    UpdateResponseModel_Patch updateUserData = new UpdateResponseModel_Patch(
+
+    UpdateUserBodyModel_Patch requestBody = new UpdateUserBodyModel_Patch(
       updateUsername,
       updateFirstName,
       updateLastName,
-      updateEmail,
-      updateAddr,
-      updateId);
+      updateEmail);
 
     SuccessfulRegistrationResponseModel registrationResponse = api.createNewUser(userData);
 
@@ -44,7 +45,7 @@ public class UpdateUserTest extends TestBase {
 
     String token = loginResponse.access();
 
-    UpdateResponseModel_Patch updateResponseModel = api.updateUser_PATCH(updateUserData, token);
+    UpdateUserResponseModel_Patch updateResponseModel = api.updateUser_PATCH(requestBody, token);
 
     System.out.println(updateEmail);
 
@@ -56,7 +57,6 @@ public class UpdateUserTest extends TestBase {
     });
   }
 
-
   /// PUT
   @Test
   @DisplayName("Тест - обновление данных пользователя PUT")
@@ -66,15 +66,27 @@ public class UpdateUserTest extends TestBase {
       updateUsername, updateFirstName,
       updateLastName, updateEmail);
 
-    SuccessfulRegistrationResponseModel registrationResponse = api.createNewUser(userData);
+
+    api.createNewUser(userData);
+
 
     LoginResponseModel loginResponse = api.login(userData);
     String token = loginResponse.access();
 
-    UpdateResponseModel_Put updateResponse = api.updateUser_PUT(updateUserDataPut, token);
+    UpdateUserBodyModel_Put requestBody = new UpdateUserBodyModel_Put(
+      updateUsername,
+      updateFirstName,
+      updateLastName,
+      updateEmail
+    );
+
+    UpdateUserResponseModel_Put updateResponse = api.updateUser_PUT(requestBody, token);
 
     step("Проверка данных", () -> {
-      assertThat(updateResponse.firstname()).isEqualTo(updateFirstName);
+      assertThat(updateResponse.username()).isEqualTo(updateUsername);
+      assertThat(updateResponse.firstName()).isEqualTo(updateFirstName);
+      assertThat(updateResponse.lastName()).isEqualTo(updateLastName);
+      assertThat(updateResponse.email()).isEqualTo(updateEmail);
     });
   }
 }
