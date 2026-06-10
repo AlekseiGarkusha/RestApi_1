@@ -1,5 +1,6 @@
 package tests;
 
+import clients.ApiReviewClient;
 import clients.AuthClient;
 import clients.ApiClubClient;
 import io.restassured.RestAssured;
@@ -8,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 public class TestBase {
   AuthClient api = new AuthClient();
   ApiClubClient apiClub = new ApiClubClient();
+  ApiReviewClient apiReviews = new ApiReviewClient();
 
   @BeforeEach
   public void setUp() {
