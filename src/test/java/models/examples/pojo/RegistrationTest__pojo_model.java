@@ -13,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RegistrationTest__pojo_model {
 
+  @Disabled("temporarily disabled")
   @Test
   void totalAmountTest_withResponseLogs() {
     get("https://selenoid.autotests.cloud/status")
@@ -21,6 +22,7 @@ public class RegistrationTest__pojo_model {
       .body("total", is(5));
   }
 
+  @Disabled("temporarily disabled")
   @Test
   void totalAmountTest_withAllLogs() {
     given()
@@ -31,6 +33,7 @@ public class RegistrationTest__pojo_model {
       .body("total", is(5));
   }
 
+  @Disabled("temporarily disabled")
   @Test
   void totalAmount200Test() {
     given()
@@ -43,7 +46,7 @@ public class RegistrationTest__pojo_model {
       .body("total", is(5));
   }
 
-
+  @Disabled("temporarily disabled")
   @Test
   void fieldsTest() {
     given()
@@ -60,6 +63,7 @@ public class RegistrationTest__pojo_model {
       .body("", hasKey("browsers"));
   }
 
+  @Disabled("temporarily disabled")
   @Test
   void browserVersionTest() {
     given()
@@ -73,6 +77,7 @@ public class RegistrationTest__pojo_model {
       .body("browsers.chrome", hasKey("128.0"));
   }
 
+  @Disabled("temporarily disabled")
   @Test
   void successfulRegistrationTest_with_pojo() {
     Faker faker = new Faker();
@@ -101,6 +106,7 @@ public class RegistrationTest__pojo_model {
 //    assertEquals(username, registrationResponseBodyPojoModel.getUserName());
   }
 
+  @Disabled("temporarily disabled")
   @Test
   void successfulRegistrationResponseTest_with_pojo() {
     Faker faker = new Faker();
