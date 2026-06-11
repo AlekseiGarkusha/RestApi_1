@@ -9,7 +9,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 
-public class RegistrationTest__lombok_model {
+public class RegistrationTestLombokModel {
 
   @Disabled("temporarily disabled")
   @Test

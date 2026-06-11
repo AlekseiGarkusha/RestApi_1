@@ -4,10 +4,10 @@ import helpers.GenerateRandomSeries;
 
 import models.login.*;
 import models.registration.create.SuccessfulRegistrationResponseModel;
-import models.user.UpdateUserBodyModel_Patch;
-import models.user.UpdateUserBodyModel_Put;
-import models.user.UpdateUserResponseModel_Patch;
-import models.user.UpdateUserResponseModel_Put;
+import models.user.UpdateUserBodyModelPatch;
+import models.user.UpdateUserBodyModelPut;
+import models.user.UpdateUserResponseModelPatch;
+import models.user.UpdateUserResponseModelPut;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -33,7 +33,7 @@ public class UpdateUserTest extends TestBase {
   void updateUser_PATCH() {
     LoginBodyModel userData = new LoginBodyModel(testUsername, password);
 
-    UpdateUserBodyModel_Patch requestBody = new UpdateUserBodyModel_Patch(
+    UpdateUserBodyModelPatch requestBody = new UpdateUserBodyModelPatch(
       updateUsername,
       updateFirstName,
       updateLastName,
@@ -45,7 +45,7 @@ public class UpdateUserTest extends TestBase {
 
     String token = loginResponse.access();
 
-    UpdateUserResponseModel_Patch updateResponseModel = api.updateUser_PATCH(requestBody, token);
+    UpdateUserResponseModelPatch updateResponseModel = api.updateUser_PATCH(requestBody, token);
 
     System.out.println(updateEmail);
 
@@ -73,14 +73,14 @@ public class UpdateUserTest extends TestBase {
     LoginResponseModel loginResponse = api.login(userData);
     String token = loginResponse.access();
 
-    UpdateUserBodyModel_Put requestBody = new UpdateUserBodyModel_Put(
+    UpdateUserBodyModelPut requestBody = new UpdateUserBodyModelPut(
       updateUsername,
       updateFirstName,
       updateLastName,
       updateEmail
     );
 
-    UpdateUserResponseModel_Put updateResponse = api.updateUser_PUT(requestBody, token);
+    UpdateUserResponseModelPut updateResponse = api.updateUser_PUT(requestBody, token);
 
     step("Проверка данных", () -> {
       assertThat(updateResponse.username()).isEqualTo(updateUsername);

@@ -7,10 +7,10 @@ import models.login.*;
 import models.registration.create.OnlyPasswordResponseModel;
 import models.registration.create.OnlyUserNameResponseModel;
 import models.registration.create.SuccessfulRegistrationResponseModel;
-import models.user.UpdateUserBodyModel_Patch;
-import models.user.UpdateUserBodyModel_Put;
-import models.user.UpdateUserResponseModel_Patch;
-import models.user.UpdateUserResponseModel_Put;
+import models.user.UpdateUserBodyModelPatch;
+import models.user.UpdateUserBodyModelPut;
+import models.user.UpdateUserResponseModelPatch;
+import models.user.UpdateUserResponseModelPut;
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
@@ -112,7 +112,7 @@ public class AuthClient {
   }
 
   @Step("Обновление данных PATCH")
-  public UpdateUserResponseModel_Patch updateUser_PATCH(UpdateUserBodyModel_Patch body, String token) {
+  public UpdateUserResponseModelPatch updateUser_PATCH(UpdateUserBodyModelPatch body, String token) {
     return given()
       .spec(baseRequestSpec)
       .header("Authorization", "Bearer " + token)
@@ -123,11 +123,11 @@ public class AuthClient {
       .log().all()
       .statusCode(200)
       .extract()
-      .as(UpdateUserResponseModel_Patch.class);
+      .as(UpdateUserResponseModelPatch.class);
   }
 
   @Step("Обновление данных Put")
-  public UpdateUserResponseModel_Put updateUser_PUT(UpdateUserBodyModel_Put body, String token) {
+  public UpdateUserResponseModelPut updateUser_PUT(UpdateUserBodyModelPut body, String token) {
     return given()
       .spec(baseRequestSpec)
       .header("Authorization", "Bearer " + token)
@@ -139,6 +139,6 @@ public class AuthClient {
       .body("username", equalTo(body.username()))
       .statusCode(anyOf(is(200), is(204)))
       .extract()
-      .as(UpdateUserResponseModel_Put.class);
+      .as(UpdateUserResponseModelPut.class);
   }
 }
