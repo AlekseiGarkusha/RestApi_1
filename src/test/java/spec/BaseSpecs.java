@@ -1,18 +1,17 @@
 package spec;
 
-import io.qameta.allure.restassured.AllureRestAssured;
-import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 
+import static allure.CustomAllureListener.withCustomTemplate;
+import static io.restassured.RestAssured.with;
 import static io.restassured.http.ContentType.JSON;
 
 public class BaseSpecs {
 
-  public static RequestSpecification baseRequestSpec =
-    new RequestSpecBuilder()
-      .setBasePath("/api/v1")
-      .setContentType(ContentType.JSON)
-      .addFilter(new AllureRestAssured())
-      .build();
+  public static RequestSpecification baseRequestSpec = with()
+    .filter(withCustomTemplate())
+    .log().all()
+    .contentType(JSON)
+    .basePath("/api/v1");
+
 }
